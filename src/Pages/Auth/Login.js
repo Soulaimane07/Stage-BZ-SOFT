@@ -21,9 +21,10 @@ function Login() {
 
   return (
     <div className='Login grid mx-auto xl:gap-0 lg:grid-cols-12'>
-        <div className='px-10 mx-auto mr-auto lg:col-span-5 lg:px-10'>
+        <div className='w-full px-10 mx-auto mr-auto md:px-20 lg:col-span-5 lg:px-10'>
             <img className='logo' src='./images/logo.jpeg' alt='Logo' />
             <div className='mt-6'>
+                <h1 style={{fontSize: 30, marginBottom: 20, paddingRight: 40, paddingLeft: 40, textAlign: 'center'}}> Log in to your account </h1>
                 <div className="mb-6">
                     <label htmlFor="email" className="block mb-2 font-medium">Email Adress</label>
                     <input type="email" id="email" required onChange={(e)=> setEmail(e.target.value)} />

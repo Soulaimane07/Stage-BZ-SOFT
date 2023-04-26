@@ -6,16 +6,16 @@ function Plans({setStep, plan, setPlan}) {
 
     const plans = [
         {
-            "title":"Agent",
-            "val":"agent"
-        },
-        {
             "title":"Client",
             "val":"client"
         },
         {
-            "title":"Companie",
-            "val":"companie"
+            "title":"Agent",
+            "val":"agent"
+        },
+        {
+            "title":"Company",
+            "val":"company"
         },
     ]
 
@@ -25,12 +25,12 @@ function Plans({setStep, plan, setPlan}) {
 
   return (
     <div>
-        <h1 style={{fontSize: 30, paddingRight: 40, paddingLeft: 40, textAlign: 'center'}}> Choose if you are an Agent or Client or Companie </h1>
+        <h1 className='text-2xl text-center md:text-3xl lg:px-10'> Choose if you are an Agent or Client or Companie </h1>
 
         <div className='mt-6'>
             <div style={{marginBottom: 10}}>
                 {plans.map((item,key)=>(
-                    <button onClick={()=> setPlan(key)} key={key} className='plan' style={key === plan ? {backgroundColor: "orange", color: "white"} : {backgroundColor: "#E8EAE6"}}>
+                    <button onClick={()=> setPlan(item.val)} key={key} className={`plan ${item.val === plan ? "bg-orange-500 text-white" : "bg-slate-200"}`}>
                         <h1> {item.title} </h1>
                     </button>
                 ))}

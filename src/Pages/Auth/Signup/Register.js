@@ -1,14 +1,15 @@
+import Agent from './Plans/Agent'
 import Client from './Plans/Client'
-import {BsArrowLeft} from 'react-icons/bs'
+import Companie from './Plans/Companie'
 import './Signup.css'
 
 function Register({step, setStep, plan}) {
 
   return (
-    <div className='mt-6'>
-        <button className='backBtn' onClick={()=> setStep(step-1)}> <BsArrowLeft /></button> 
-        
-        {plan === 1 && <Client />}
+    <div>
+        {plan === "agent" && <Agent step={step} setStep={setStep} />}
+        {plan === "client" && <Client step={step} setStep={setStep} />}
+        {plan === "company" && <Companie step={step} setStep={setStep} />}
     </div>
   )
 }
