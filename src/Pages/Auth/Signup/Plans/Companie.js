@@ -22,9 +22,9 @@ function Companie({step, setStep}) {
     const navigate = useNavigate()
     const login = () => {
         localStorage.setItem('Rec-user', JSON.stringify(company))
-        console.log(company);
         navigate('/')
         window.location.reload()
+        console.log(company);
     }
 
   return (

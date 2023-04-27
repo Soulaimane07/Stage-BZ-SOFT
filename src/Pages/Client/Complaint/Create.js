@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { GeneralBtn } from '../../../Components/Buttons'
+import { useNavigate } from 'react-router-dom'
 
 function Create() {
     const [image, setImage] = useState("")
@@ -18,12 +19,14 @@ function Create() {
 
     console.log(complaint);
 
+    const navigate = useNavigate()
     const Create = () => {
-        
+        navigate('/complaints/')
     }
 
   return (
     <div className='max-w-screen-xl mx-auto p-4'>
+        <h1 class="text-2xl font-extrabold text-slate-900 md:text-3xl lg:text-4xl mb-10"> Create Complaint</h1>
         <div className="px-8 md:px-40 lg:px-80">
             <div className="flex items-center justify-center w-full mb-6">
                 <label for="dropzone-file" className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800  hover:bg-gray-100 dark:border-gray-400 dark:hover:border-gray-500 dark:hover:bg-gray-200">

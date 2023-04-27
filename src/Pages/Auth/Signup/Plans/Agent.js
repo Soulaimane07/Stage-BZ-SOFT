@@ -24,9 +24,9 @@ function Agent({step, setStep}) {
   const navigate = useNavigate()
   const login = () => {
       localStorage.setItem('Rec-user', JSON.stringify(agent))
-      console.log(agent);
       navigate('/')
       window.location.reload()
+      console.log(agent);
   }
 
   return (

@@ -1,9 +1,7 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import NoData from '../../../Components/NoData'
 
-function Complaint(props) {
-
+function Users(props) {
   return (
     <div className="max-w-screen-xl mx-auto p-4">
         <h1 class="text-2xl font-extrabold text-slate-900 md:text-3xl lg:text-4xl"> {props.title} ( {props.data?.length} )</h1>
@@ -13,11 +11,11 @@ function Complaint(props) {
                 <>
                 
                 </>
-                :   <NoData stat="complaint" create="Complaint" />
+                : <NoData stat="users" create="User" />
             }
         </div>
     </div>
   )
 }
 
-export default Complaint
+export default Users

@@ -75,7 +75,6 @@ function Nav({user}) {
                     
     {logOut &&<LogOutModal setLogout={setLogout} />}
     </>
-
   )
 }
 

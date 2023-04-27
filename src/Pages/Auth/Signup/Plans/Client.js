@@ -24,6 +24,7 @@ function Client({step, setStep}) {
         localStorage.setItem('Rec-user', JSON.stringify(client))
         navigate('/')
         window.location.reload()
+        console.log(client);
     }
 
   return (
