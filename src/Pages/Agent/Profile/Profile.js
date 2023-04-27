@@ -3,7 +3,7 @@ import React from 'react'
 function Profile({user}) {
   return (
     <div className='max-w-screen-xl mx-auto p-4'>
-        <h1 class="text-2xl font-extrabold text-slate-900 md:text-3xl lg:text-4xl">
+        <h1 className="text-2xl font-extrabold text-slate-900 md:text-3xl lg:text-4xl">
             Your Profile
         </h1>
 
