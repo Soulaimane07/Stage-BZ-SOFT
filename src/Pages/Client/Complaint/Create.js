@@ -27,7 +27,7 @@ function Create() {
   return (
     <div className='max-w-screen-xl mx-auto p-4'>
         <h1 className="text-2xl font-extrabold text-slate-900 md:text-3xl lg:text-4xl mb-10"> Create Complaint</h1>
-        <div className="px-8 md:px-40 lg:px-80">
+        <div className="px-8 md:px-40 lg:px-80 mb-60">
             <div className="flex items-center justify-center w-full mb-6">
                 <label htmlFor="dropzone-file" className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800  hover:bg-gray-100 dark:border-gray-400 dark:hover:border-gray-500 dark:hover:bg-gray-200">
                     <div className="flex flex-col items-center justify-center pt-5 pb-6">
@@ -51,7 +51,7 @@ function Create() {
                 <textarea onChange={(e)=> setDesc(e.target.value)} id="message" rows="4" className="block p-2.5 w-full text-sm rounded-lg border border-gray-500" placeholder="Write your thoughts here..."></textarea>
             </div>
 
-            {GeneralBtn("Create", cond, Create)}
+            <GeneralBtn text="Create" condition={cond} fun={Create} />
         </div>
     </div>
   )

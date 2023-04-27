@@ -4,7 +4,7 @@ import Home from '../../Pages/Client/Home/Home'
 import Nav from '../../Pages/Client/Navbar/Nav'
 import Complaint from '../../Pages/Client/Complaint/Complaint'
 import Create from '../../Pages/Client/Complaint/Create'
-import Profile from '../../Pages/Client/Profile/Profile'
+import Profile from '../../Components/Pages/Profile'
 
 function ClientStack({user}) {
   const complaintsList = []

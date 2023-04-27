@@ -35,8 +35,8 @@ function Plans({setStep, plan, setPlan}) {
                     </button>
                 ))}
             </div>
+            <GeneralBtn text="Next" condition={cond} fun={Next} />
 
-            {GeneralBtn("Next", cond, Next)}
 
             <div style={{marginTop: 20, flexDirection: 'row', display: 'flex', alignItems: 'center'}}>
                 <p> You have an account? </p>

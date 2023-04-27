@@ -75,7 +75,7 @@ function Navbar({user}) {
             </div>
         </nav>
 
-        {logOut &&<LogOutModal setLogout={setLogout} />}
+        {logOut &&<LogOutModal text="Are you sure you want to Log out?" setLogout={setLogout} />}
     </div>
   )
 }

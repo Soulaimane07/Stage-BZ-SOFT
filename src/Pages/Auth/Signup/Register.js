@@ -7,8 +7,8 @@ function Register({step, setStep, plan}) {
 
   return (
     <div>
-        {plan === "agent" && <Agent step={step} setStep={setStep} />}
         {plan === "client" && <Client step={step} setStep={setStep} />}
+        {plan === "agent" && <Agent step={step} setStep={setStep} />}
         {plan === "company" && <Companie step={step} setStep={setStep} />}
     </div>
   )

@@ -33,7 +33,7 @@ function Login() {
                     <label htmlFor="password" className="block mb-2 font-medium">Password</label>
                     <input type="password" id="password" required onChange={(e)=> setPass(e.target.value)} />
                 </div>
-                {GeneralBtn("Login", cond, login)}
+                <GeneralBtn text="Login" condition={cond} fun={login} />
 
                 <div style={{marginTop: 20, flexDirection: 'row', display: 'flex', alignItems: 'center'}}>
                     <p> Don't you have an account? </p>
