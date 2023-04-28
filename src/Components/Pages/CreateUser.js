@@ -27,12 +27,11 @@ function CreateUser() {
         navigate('/users')
         console.log(user);
     }
-    
 
   return (
     <div className='max-w-screen-xl mx-auto p-4'>
-        <h1 className="text-2xl font-extrabold text-slate-900 md:text-3xl lg:text-4xl mb-10"> Create User</h1>
-        <div className="px-8 md:px-40 lg:px-80 mb-60">
+        <h1 className="text-2xl mt-4 lg:mt-0 font-extrabold text-slate-900 md:text-3xl lg:text-4xl mb-10"> Create User</h1>
+        <div className="px-8 md:px-40 lg:px-80 mb-40">
             <div>
                 <div className='mb-10 createUser space-x-4 flex justify-between'>
                     {plans.map((item,key)=>(

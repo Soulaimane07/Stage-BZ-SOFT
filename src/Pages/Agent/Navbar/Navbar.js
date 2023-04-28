@@ -65,7 +65,7 @@ function Navbar({user}) {
                                 key={key}
                                 to={item.link} 
                                 activateclassname="active"
-                                className={` hover:text-orange-400 text-white`}
+                                className={(navData) => navData.isActive ? "block text-orange-400" : 'block text-white hover:text-orange-400'}
                             >
                                 {item.title}
                             </NavLink>

@@ -18,12 +18,18 @@ function Profile({user}) {
 
   return (
     <div className='max-w-screen-xl mx-auto p-4'>
-        <h1 className="text-2xl font-extrabold text-slate-900 md:text-3xl lg:text-4xl">
+        <h1 className="text-2xl mt-4 lg:mt-0 font-extrabold text-slate-900 md:text-3xl lg:text-4xl">
             Your Profile
         </h1>
 
         <div className='mt-10 max-w-screen-xl mx-auto p-4'>
             <div className="px-8 md:px-40 lg:px-96">
+                {user?.cname &&
+                    <div className="mb-6 flex justify-between">
+                        <label htmlFor="cname" className="block mb-2 font-medium">Company Name</label>
+                        <h1 className="font-bold"> {user?.cname} </h1>
+                    </div>
+                }
                 {user?.email &&
                     <div className="mb-6 flex justify-between">
                         <label htmlFor="email" className="block mb-2 font-medium">Email Adress</label>

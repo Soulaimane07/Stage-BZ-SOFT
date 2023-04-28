@@ -9,7 +9,7 @@ function Nav({user}) {
 
     const pages = [
         {
-            "title":"Home",
+            "title":"Dashboard",
             "link":"/"
         },
         {
@@ -40,7 +40,7 @@ function Nav({user}) {
 
                 <div className={`${account && "hidden"} z-50 absolute top-16 right-16 my-4 text-base list-none bg-orange-500 divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-800 dark:divide-gray-600 md:top-16 md:right-0 lg:top-16 lg:right-16`} id="user-dropdown">
                     <div className="px-4 py-3">
-                    <span className="block text-sm text-white"> {user?.fname} </span>
+                    <span className="block text-sm text-white"> {user?.fname || user?.cname} </span>
                     <span className="block text-sm text-gray-100 truncate dark:text-gray-400"> {user?.email} </span>
                     </div>
                     <ul className="py-2" aria-labelledby="user-menu-button">

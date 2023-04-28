@@ -1,24 +1,24 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
-import Home from '../../Pages/Client/Home/Home'
+import Footer from '../../Components/Footer'
 import Nav from '../../Pages/Client/Navbar/Nav'
+import Home from '../../Pages/Client/Home/Home'
+import Profile from '../../Components/Pages/Profile'
 import Complaint from '../../Pages/Client/Complaint/Complaint'
 import Create from '../../Pages/Client/Complaint/Create'
-import Profile from '../../Components/Pages/Profile'
-import Footer from '../../Components/Footer'
 
-function ClientStack({user}) {
+function CompanyStack({user}) {
   const complaintsList = []
-  const footerPages = [
-    {
-      "title":"Dashboard",
-      "link":"/"
-    },
-    {
-      "title":"Complaints",
-      "link":"/complaints"
-    },
-  ]
+    const footerPages = [
+        {
+          "title":"Dashboard",
+          "link":"/"
+        },
+        {
+          "title":"Complaints",
+          "link":"/complaints"
+        },
+    ]
 
   return (
     <>
@@ -38,4 +38,4 @@ function ClientStack({user}) {
   )
 }
 
-export default ClientStack
+export default CompanyStack
