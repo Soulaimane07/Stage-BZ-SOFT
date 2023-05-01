@@ -8,7 +8,9 @@ import Profile from '../../Components/Pages/Profile'
 import Footer from '../../Components/Footer'
 
 function ClientStack({user}) {
-  const complaintsList = []
+  const complaintsList = [
+  ]
+
   const footerPages = [
     {
       "title":"Dashboard",
@@ -24,7 +26,7 @@ function ClientStack({user}) {
     <>
       <div style={{marginTop: 100, minHeight: "90vh"}}>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home data={complaintsList} />} />
           <Route path="/complaints">
             <Route path="" element={<Complaint title="Your Complaints" data={complaintsList} />} />
             <Route path="create" element={<Create />} />

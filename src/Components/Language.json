@@ -1,0 +1,278 @@
+{
+    "English":{
+        "title":"en",
+        "navbar":{
+            "dashboard":"Dashboard",
+            "complaints":"Complaints",
+            "users":"Users",
+            "profile":"Profile",
+            "signout":"Sign out"
+        },
+        "home":{
+            "dashboard":"Dashboard",
+            "complaints":"Complaints",
+            "users":"Users",
+            "clients":"Clients",
+            "agents":"Agents",
+            "companies":"companies",
+            "answers":"Answers",
+            "read":"Read more",
+            "createdC":"Created Complaints",
+            "answeredC":"Answered Complaints"
+        },
+        "footer":{
+            "pages":"Pages",
+            "dashboard":"Dashboard",
+            "complaints":"Complaints",
+            "users":"Users",
+            "profile":"Prodile",
+            "rights":"All Rights Reserved."
+        },
+        "complaints":{
+            "complaints":"Complaints",
+            "read":"Read more",
+            "message":"Write your comment here...",
+            "commentaire":"Comment",
+            "nodata":{
+                "nodata":"No complaint available",
+                "create":"Create Complaint"
+            }
+        },
+        "Ccreate":{
+            "Ptitle":"Create Complaint",
+            "title":"Title",
+            "priority":"Priority",
+            "desc":"Description",
+            "message":"Write your message here...",
+            "create":"Create"
+        },
+        "users":{
+            "users":"Users",
+            "nodata":{
+                "nodata":"No users available",
+                "create":"Create User"
+            }
+        },
+        "profile":{
+            "title":"Your Profile",
+            "cname":"Company Name",
+            "email":"Email Address",
+            "fname":"First Name",
+            "lname":"Last Name",
+            "phone":"Phone",
+            "type":"Account Type",
+            "pass":"Password",
+            "update":"Update",
+            "delete":"Delete"
+        },
+        "buttons":{
+            "comment":"Comment",
+            "delete":"Delete",
+            "post":"Post",
+            "cancel":"Cancel"
+        },
+        "alert":{
+            "yes":"Yes, I'm sure",
+            "no":"No, cancel",
+            "complaint":"Are you sure you want to Delete this complaint?"
+        },
+        "months":{
+            "january":"January",
+            "february":"February",
+            "march":"March",
+            "april":"April",
+            "may":"May",
+            "june":"June",
+            "july":"July",
+            "august":"August",
+            "september":"September",
+            "october":"October",
+            "november":"November",
+            "december":"December"
+        }
+    },
+    "Frensh":{
+        "title":"fr",
+        "navbar":{
+            "dashboard":"Tableau de bord",
+            "complaints":"Plaintes",
+            "users":"Utilisateurs",
+            "profile":"Profil",
+            "signout":"Se déconnecter"
+        },
+        "home":{
+            "dashboard":"Tableau de bord",
+            "complaints":"Plaintes",
+            "users":"Utilisateurs",
+            "clients":"Clients",
+            "agents":"Agents",
+            "companies":"Entreprises",
+            "answers":"Réponses",
+            "read":"En savoir plus",
+            "createdC":"Plaintes créées",
+            "answeredC":"Plaintes répondues"
+        },
+        "footer":{
+            "pages":"Pages",
+            "dashboard":"Tableau de bord",
+            "complaints":"Plaintes",
+            "users":"Utilisateurs",
+            "profile":"Profil",
+            "rights":"Tous les droits sont réservés."
+        },
+        "complaints":{
+            "complaints":"Plaintes",
+            "read":"En savoir plus",
+            "message":"Écrivez votre commentaire ici...",
+            "commentaire":"Commentaire",
+            "nodata":{
+                "nodata":"Aucune plainte disponible",
+                "create":"Créer une plainte"
+            }
+        },
+        "Ccreate":{
+            "Ptitle":"Créer une réclamation",
+            "title":"Titre",
+            "priority":"Priorité",
+            "desc":"Description",
+            "message":"Ecrivez votre message ici...",
+            "create":"Créer"
+        },
+        "users":{
+            "users":"Utilisateurs",
+            "nodata":{
+                "nodata":"Aucun utilisateur disponible",
+                "create":"Créer un utilisateur"
+            }
+        },
+        "profile":{
+            "title":"Votre profil",
+            "cname":"Nom de l'entreprise",
+            "email":"Adresse e-mail",
+            "fname":"Prénom",
+            "lname":"Nom de famille",
+            "phone":"Téléphone",
+            "type":"Type de compte",
+            "pass":"Mot de passe",
+            "update":"Mise à jour",
+            "delete":"Supprimer"
+        },
+        "buttons":{
+            "comment":"Commenter",
+            "delete":"Supprimer",
+            "post":"Poste",
+            "cancel":"Annuler"
+        },
+        "alert":{
+            "yes":"Oui, je suis sûr",
+            "no":"Non, annuler",
+            "complaint":"Voulez-vous vraiment supprimer cette réclamation ?"
+        },
+        "months":{
+            "january":"Janvier",
+            "february":"Février",
+            "march":"Mars",
+            "april":"Avril",
+            "may":"mai",
+            "june":"Juin",
+            "july":"Juillet",
+            "august":"Août",
+            "september":"Septembre",
+            "october":"Octobre",
+            "november":"Novembre",
+            "december":"Décembre"
+        }
+    },
+    "Arabic":{
+        "title":"ar",
+        "navbar":{
+            "dashboard":"لوحة القيادة",
+            "complaints":"الشكاوي",
+            "users":"المستخدمون",
+            "profile":"الحساب",
+            "signout":"تسجيل الخروج"
+        },
+        "home":{
+            "dashboard":"لوحة القيادة",
+            "complaints":"الشكاوي",
+            "users":"المستخدمون",
+            "clients":"عملاء",
+            "agents":"عملاء",
+            "companies":"شركات",
+            "answers":"الإجابات",
+            "read":"اقرأ أكثر",
+            "createdC":"الشكاوي المنشأة",
+            "answeredC":"الرد على الشكاوى"
+        },
+        "footer":{
+            "pages":"الصفحات",
+            "dashboard":"لوحة القيادة",
+            "complaints":"الشكاوي",
+            "users":"المستخدمون",
+            "profile":"الحساب",
+            "rights":"كل الحقوق محفوظة."
+        },
+        "complaints":{
+            "complaints":"الشكاوي",
+            "read":"اقرأ أكثر",
+            "message":"أكتب تعليقك هنا...",
+            "commentaire":"تعليق",
+            "nodata":{
+                "nodata":"لا توجد شكوى",
+                "create":"إنشاء شكوى"
+            }
+        },
+        "Ccreate":{
+            "Ptitle":"إنشاء شكوى",
+            "title":"العنوان",
+            "priority":"Priority",
+            "desc":"الوصف",
+            "message":"اكتب رسالتك هنا...",
+            "create":"إنشاء"
+        },
+        "users":{
+            "users":"المستخدمون",
+            "nodata":{
+                "nodata":"لا يوجد مستخدمون متاحون",
+                "create":"إنشاء مستخدم"
+            }
+        },
+        "profile":{
+            "title":"ملفك الشخصي",
+            "cname":"اسم الشركة",
+            "email":"عنوان البريد الإلكتروني",
+            "fname":"الاسم الأول",
+            "lname":"اسم العائلة",
+            "phone":"الهاتف",
+            "type":"نوع الحساب",
+            "pass":"كلمة المرور",
+            "update":"تحديث",
+            "delete":"حذف"
+        },
+        "buttons":{
+            "comment":"تعليق",
+            "delete":"حذف",
+            "post":"إنشاء",
+            "cancel":"إلغاء"
+        },
+        "alert":{
+            "yes":"نعم، أنا متأكد",
+            "no":"لا ، إلغاء",
+            "complaint":"هل أنت متأكد أنك تريد حذف هذه الشكوى؟"
+        },
+        "months":{
+            "january":"يناير",
+            "february":"فبراير",
+            "march":"مارس",
+            "april":"أبريل",
+            "may":"ماي",
+            "june":"يونيو",
+            "july":"يوليوز",
+            "august":"غشت",
+            "september":"شتنبر",
+            "october":"أكتوبر",
+            "november":"نونمبر",
+            "december":"دجنبر"
+        }
+    }
+}

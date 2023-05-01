@@ -3,35 +3,37 @@ import { Link } from 'react-router-dom'
 import {FiUsers} from 'react-icons/fi'
 import {BiClipboard} from 'react-icons/bi'
 
-import { LineChart, PieChart, Months } from '../../../Components/Charts';
+import { LineChart, PieChart } from '../../../Components/Charts';
+import Box from '../../../Components/Box';
+import { Lang } from '../../../Components/Functions';
 
 function Home({complaints, users}) {
   const articles = [
     {
       "icon":<BiClipboard />,
-      "title":"Complaints",
-      "text":`${complaints?.length} complaints | 4 Answers`,
+      "title": Lang()?.home.complaints,
+      "text":`${Lang()?.home.complaints}: ${complaints?.length} | ${Lang()?.home.answers}: ${0}`,
       "link":"/complaints"
     },
     {
       "icon":<FiUsers />,
-      "title":"Users",
-      "text":`${users?.length} users | 4 clients | 2 agents | 1 company`,
+      "title": Lang()?.home.users,
+      "text":`${Lang()?.home.users}: ${users?.length} | ${Lang()?.home.clients}: ${4} | ${Lang()?.home.agents}: ${2} | ${Lang()?.home.companies}: ${1}`,
       "link":"/users"
     },
   ]
 
   const data = {
-    labels: Months,
+    labels: [Lang()?.months.january, Lang()?.months.february, Lang()?.months.march, Lang()?.months.april, Lang()?.months.may, Lang()?.months.june, Lang()?.months.july, Lang()?.months.august, Lang()?.months.september, Lang()?.months.october, Lang()?.months.november, Lang()?.months.december],
     datasets: [
       {
-        label: "Created Complaints",
+        label: Lang()?.home.createdC,
         data: [0, 10, 50, 80, 100, 100, 250, 220, 200, 200, 200, 210],
         borderColor: '#0bf186b1',
         backgroundColor: '#0bf186b1',
       },
       {
-        label: "Answerd Complaints",
+        label: Lang()?.home.answeredC,
         data: [0, 10, 40, 50, 90, 100, 220, 200, 180, 170, 200, 200],
         borderColor: '#F45050',
         backgroundColor: '#F45050',
@@ -40,7 +42,7 @@ function Home({complaints, users}) {
   };
 
   const Piedata = {
-    labels: ['Clients', 'Agents', 'Companies'],
+    labels: [Lang()?.home?.clients, Lang()?.home?.agents, Lang()?.home?.companies],
     datasets: [
       {
         label: '# of Votes',
@@ -61,27 +63,13 @@ function Home({complaints, users}) {
   };
 
   return (
-    <div className='max-w-screen-xl mx-auto p-4 pb-20'>
-      <h1 className="text-2xl mt-4 lg:mt-0 font-extrabold text-slate-900 md:text-3xl lg:text-4xl"> Dashboard </h1>
+    <div className={`${Lang()?.title === "ar" && "text-right"} max-w-screen-xl mx-auto p-4 pb-20`}>
+      <h1 className="  text-2xl mt-4 lg:mt-0 font-extrabold text-slate-900 md:text-3xl lg:text-4xl"> {Lang()?.home.dashboard} </h1>
       
       <div className="mt-6 px-4 mx-auto max-w-screen-xl lg:mt-10 lg:px-0">
         <div className="grid gap-8 lg:grid-cols-2">
           {articles.map((item,key)=>(
-            <article key={key} className="p-6 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-700 dark:border-gray-700">
-              <h2 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                <Link className='flex items-center' to={item.link}>
-                  {item.icon}
-                  <span className='ml-3'> {item.title} </span>
-                </Link>
-              </h2>
-              <p className="mb-5 font-light text-gray-500 dark:text-gray-400">
-                {item.text}
-              </p>
-              <Link to={item.link} className="float-right inline-flex text-gray-500 items-center font-medium dark:text-gray-400 hover:underline">
-                  Read more
-                  <svg className="ml-2 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
-              </Link>
-            </article>  
+            <Box data={item} key={key} read={Lang()?.home.read} type={Lang()?.title} />
           ))}
         </div>  
       </div>
@@ -90,13 +78,13 @@ function Home({complaints, users}) {
         <div className="space-y-8 lg:flex lg:space-y-0 lg:space-x-8">
           <div  className="p-6 bg-white rounded-lg border lg:w-2/3 border-gray-200 shadow-md ">
             <Link to={"/complaints"} className="mb-2 text-2xl font-bold tracking-tight text-gray-800">
-              Complaints
+              {Lang()?.home.complaints}
             </Link>
             <LineChart  data={data} />
           </div>
           <div  className="p-6 bg-white rounded-lg border lg:w-1/3 border-gray-200 shadow-md ">
             <Link to={'/users'} className="mb-2 text-2xl font-bold tracking-tight text-gray-800">
-              Users
+              {Lang()?.home.users}
             </Link>
             <PieChart data={Piedata} />
           </div>

@@ -8,6 +8,7 @@ import Users from '../../Pages/Agent/Users/Users'
 import Create from '../../Pages/Client/Complaint/Create'
 import CreateUser from '../../Components/Pages/CreateUser'
 import Footer from '../../Components/Footer'
+import { Lang } from '../../Components/Functions'
 
 function AgentStack({user}) {
   const complaintsList = [
@@ -42,41 +43,43 @@ function AgentStack({user}) {
       "desc":"Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order."
     },
   ]
+  // const complaintsList = []
+  
   const usersList = []
 
   const footerPages = [
     {
-      "title":"Dashboard",
+      "title": Lang()?.footer.dashboard,
       "link":"/"
     },
     {
-      "title":"Complaints",
+      "title": Lang()?.footer.complaints,
       "link":"/complaints"
     },
     {
-      "title":"Users",
+      "title": Lang()?.footer.users,
       "link":"/users"
     },
   ]
 
   return (
     <>
-        <div style={{marginTop: 140, minHeight: "90vh"}}>
-            <Routes>
-                <Route path="/" element={<Home user={user} complaints={complaintsList} users={usersList} />} />
-                <Route path="/complaints">
-                  <Route path='' element={<Complaint title="Complaints" data={complaintsList} />} />
-                  <Route path='create' element={<Create />} />
-                </Route>
-                <Route path="/users">
-                  <Route path='' element={<Users title="Users" data={usersList} />} />
-                  <Route path='create' element={<CreateUser />} />
-                </Route>
-                <Route path="/profile" element={<Profile user={user} />} />
-            </Routes>
-        </div>
-        <Navbar user={user} />
-        <Footer pages={footerPages} />
+      <div style={{marginTop: 140, minHeight: "90vh"}}>
+          <Routes>
+              <Route path="/" element={<Home complaints={complaintsList} users={usersList} />} />
+              <Route path="/complaints">
+                <Route path='' element={<Complaint data={complaintsList}  />} />
+                <Route path='create' element={<Create />} />
+              </Route>
+              <Route path="/users">
+                <Route path='' element={<Users data={usersList} />} />
+                <Route path='create' element={<CreateUser />} />
+              </Route>
+              <Route path="/profile" element={<Profile user={user} />} />
+          </Routes>
+      </div>
+      <Navbar user={user} />
+      <Footer pages={footerPages} />
     </>
   )
 }

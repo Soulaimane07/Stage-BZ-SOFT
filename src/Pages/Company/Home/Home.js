@@ -3,12 +3,12 @@ import Box from '../../../Components/Box'
 import { BiClipboard } from 'react-icons/bi'
 
 function Home({data}) {
-  const Complaints = {
-    "icon":<BiClipboard />,
-    "title":"Complaints",
-    "text":`${data?.length} complaints | 0 Answers`,
-    "link":"/complaints"
-  }
+    const Complaints = {
+        "icon":<BiClipboard />,
+        "title":"Complaints",
+        "text":`${data?.length} complaints | 0 Answers`,
+        "link":"/complaints"
+    }
 
   return (
     <div className='max-w-screen-xl mx-auto p-4 pb-20'>

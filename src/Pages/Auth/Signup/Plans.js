@@ -25,7 +25,7 @@ function Plans({setStep, plan, setPlan}) {
 
   return (
     <div>
-        <h1 className='text-2xl text-center md:text-3xl lg:px-10'> Choose if you are an Agent or Client or Companie </h1>
+        <h1 className='text-2xl text-center md:text-3xl lg:px-8'> Choose if you are an Agent or Client or Companie </h1>
 
         <div className='mt-6'>
             <div style={{marginBottom: 10}}>

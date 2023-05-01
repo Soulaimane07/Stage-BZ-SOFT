@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { GeneralBtn } from '../../../Components/Buttons'
 import { useNavigate } from 'react-router-dom'
+import { Lang } from '../../../Components/Functions'
 
 function Create() {
     const [image, setImage] = useState("")
@@ -26,7 +27,9 @@ function Create() {
 
   return (
     <div className='max-w-screen-xl mx-auto p-4'>
-        <h1 className="text-2xl mt-4 lg:mt-0 font-extrabold text-slate-900 md:text-3xl lg:text-4xl mb-10"> Create Complaint</h1>
+        <h1 className="text-2xl mt-4 lg:mt-0 font-extrabold text-slate-900 md:text-3xl lg:text-4xl mb-10">
+            {Lang()?.Ccreate.Ptitle}
+        </h1>
         <div className="px-8 md:px-40 lg:px-80 mb-40">
             <div className="flex items-center justify-center w-full mb-6">
                 <label htmlFor="dropzone-file" className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800  hover:bg-gray-100 dark:border-gray-400 dark:hover:border-gray-500 dark:hover:bg-gray-200">
@@ -39,19 +42,19 @@ function Create() {
                 </label>
             </div> 
             <div className="mb-6">
-                <label htmlFor="title" className="block mb-2 font-medium">Title</label>
+                <label htmlFor="title" className="block mb-2 font-medium"> {Lang()?.Ccreate.title} </label>
                 <input type="text" id="title" required onChange={(e)=> setTitle(e.target.value)} />
             </div>
             <div className="mb-6">
-                <label htmlFor="priorite" className="block mb-2 font-medium">Priorite</label>
+                <label htmlFor="priorite" className="block mb-2 font-medium"> {Lang()?.Ccreate.priority} </label>
                 <input type="text" id="priorite" required onChange={(e)=> setPeriode(e.target.value)} />
             </div>
             <div className="mb-6">
-                <label htmlFor="priorite" className="block mb-2 font-medium">Description</label>
-                <textarea onChange={(e)=> setDesc(e.target.value)} id="message" rows="4" className="block p-2.5 w-full text-sm rounded-lg border border-gray-500" placeholder="Write your thoughts here..."></textarea>
+                <label htmlFor="priorite" className="block mb-2 font-medium"> {Lang()?.Ccreate.desc} </label>
+                <textarea onChange={(e)=> setDesc(e.target.value)} id="message" rows="4" className="block p-2.5 w-full text-sm rounded-lg border border-gray-500" placeholder={Lang()?.Ccreate.message} ></textarea>
             </div>
 
-            <GeneralBtn text="Create" condition={cond} fun={Create} />
+            <GeneralBtn text={Lang()?.Ccreate.create} condition={cond} fun={Create} />
         </div>
     </div>
   )

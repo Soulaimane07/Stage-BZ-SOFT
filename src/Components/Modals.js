@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom"
 import { GeneralBtn } from "./Buttons"
 import { useState } from "react"
 
-export const LogOutModal = ({text, setLogout, fun}) => {
+export const LogOutModal = ({Language, setLogout, fun}) => {
     const navigate = useNavigate()
     const Logout = () => {
         localStorage.removeItem('Rec-user')
@@ -20,11 +20,13 @@ export const LogOutModal = ({text, setLogout, fun}) => {
                     </button>
                     <div className="p-6 text-center">
                         <svg aria-hidden="true" className="mx-auto mb-4 text-gray-400 w-14 h-14 dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                        <h3 className="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400"> {text} </h3>
+                        <h3 className="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400"> {Language?.complaint} </h3>
                         <button onClick={fun ? fun : Logout } data-modal-hide="popup-modal" type="button" className="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
-                            Yes, I'm sure
+                            {Language?.yes}
                         </button>
-                        <button onClick={()=> setLogout(false)} data-modal-hide="popup-modal" type="button" className="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">No, cancel</button>
+                        <button onClick={()=> setLogout(false)} data-modal-hide="popup-modal" type="button" className="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
+                            {Language?.no}
+                        </button>
                     </div>
                 </div>
             </div>
@@ -113,7 +115,7 @@ export const UpdateUserModal = ({setUpdate, user}) => {
     )
 }
 
-export const ComplaintModal = ({data, setComplaintBody, setDeleteC}) => {
+export const ComplaintModal = ({Language, data, setComplaintBody, setDeleteC}) => {
     const deleteC = () => {
         setDeleteC(true)
     }
@@ -132,7 +134,6 @@ export const ComplaintModal = ({data, setComplaintBody, setDeleteC}) => {
         alert("Commente succed !!!")
         setCommenter(false)
     }
-
 
     return(
         <div id="popup-modal" tabIndex="-1" className="fixed flex z-50 mx-auto overflow-x-hidden overflow-y-auto inset-0 h-[calc(100%-1rem)] max-h-full">
@@ -160,13 +161,13 @@ export const ComplaintModal = ({data, setComplaintBody, setDeleteC}) => {
                                 <>
                                     <hr className="mt-8 mb-4 border-gray-200 sm:mx-auto dark:border-gray-500 lg:my-8 lg:mb-4" />
                                     <div className="px-5 pt-5">
-                                        <h5 className="mb-4 text-xl font-bold tracking-tight text-gray-900 dark:text-white"> Commenter </h5>
+                                        <h5 className="mb-4 text-xl font-bold tracking-tight text-gray-900 dark:text-white"> {Language?.complaints?.commentaire} </h5>
 
-                                        <textarea id="message" rows="4" class=" outline-none block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-orange-500 focus:border-orange-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-orange-500 dark:focus:border-orange-500" placeholder="Write your thoughts here..."></textarea>
+                                        <textarea id="message" rows="4" class=" outline-none block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-orange-500 focus:border-orange-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-orange-500 dark:focus:border-orange-500" placeholder={Language?.complaints?.message}></textarea>
 
                                         <div className="mt-4 flex justify-between space-x-4">
-                                            <GeneralBtn text="Post" fun={Commente} condition={false} />
-                                            <GeneralBtn text="Cancel" fun={CancelCommante} condition={false} role="delete" />
+                                            <GeneralBtn text={Language?.buttons?.post} fun={Commente} condition={false} />
+                                            <GeneralBtn text={Language?.buttons?.cancel} fun={CancelCommante} condition={false} role="delete" />
                                         </div>
                                     </div>
                                 </>
@@ -175,8 +176,8 @@ export const ComplaintModal = ({data, setComplaintBody, setDeleteC}) => {
                         
                         {!commenter &&
                             <div className="flex justify-between space-x-4">
-                                <GeneralBtn text="Comente" fun={OpenCommente} condition={false} />
-                                <GeneralBtn text="Delete" fun={deleteC} condition={false} role="delete" />
+                                <GeneralBtn text={Language?.buttons?.comment} fun={OpenCommente} condition={false} />
+                                <GeneralBtn text={Language?.buttons?.delete} fun={deleteC} condition={false} role="delete" />
                             </div>
                         }
                     </div>
