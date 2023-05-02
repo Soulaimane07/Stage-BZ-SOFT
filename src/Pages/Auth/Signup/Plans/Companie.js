@@ -1,6 +1,7 @@
 import { PlansHeader } from '../../../../Components/Headers'
 import { useNavigate } from 'react-router-dom'
 import CreateCompany from '../../../../Components/Pages/CreateUser/CreateCompany'
+import { Lang } from '../../../../Components/Functions'
 
 function Companie({step, setStep}) {
   const navigate = useNavigate()
@@ -12,7 +13,7 @@ function Companie({step, setStep}) {
 
   return (
     <div>
-        {PlansHeader("Create company account", step, setStep)}
+        {PlansHeader(Lang()?.signup?.Ccompany, step, setStep)}
         
         <CreateCompany fun={Login} />
     </div>

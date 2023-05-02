@@ -1,6 +1,7 @@
 import { PlansHeader } from '../../../../Components/Headers'
 import { useNavigate } from 'react-router-dom'
 import CreateAgent from '../../../../Components/Pages/CreateUser/CreateAgent'
+import { Lang } from '../../../../Components/Functions'
 
 function Agent({step, setStep}) {
   const navigate = useNavigate()
@@ -12,7 +13,7 @@ function Agent({step, setStep}) {
 
   return (
     <div>
-        {PlansHeader("Create agent account", step, setStep)}
+        {PlansHeader(Lang()?.signup?.Cagent, step, setStep)}
         <CreateAgent fun={Login} />
     </div>
   )

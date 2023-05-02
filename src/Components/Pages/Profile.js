@@ -69,6 +69,11 @@ function Profile({user}) {
                         <h1 className="font-bold">{user?.pass} </h1>
                     </div>
                 }
+                <div className={`${lang.title === "ar" && "flex-row-reverse"} mb-6 flex justify-between`}>
+                    <label htmlFor="password" className="block mb-2 font-medium"> {lang?.profile.lang} </label>
+                    <h1 className="font-bold"> {lang?.title1} </h1>
+                </div>
+
                 <div className="flex space-x-4">
                     <GeneralBtn text={lang?.profile.update} condition={false} fun={UpdateOpen} role={"update"} />
                     <GeneralBtn text={lang?.profile.delete} condition={false} fun={DeleteOpen} role={"delete"} />
@@ -76,7 +81,7 @@ function Profile({user}) {
             </div>
         </div>
 
-        {update && <UpdateUserModal user={user} setUpdate={setUpdate} />}
+        {update && <UpdateUserModal user={user} setUpdate={setUpdate} language={lang?.title} />}
         {deleteM && <LogOutModal title={lang?.alert?.delete} yes={lang?.alert?.yes} no={lang?.alert?.no} setLogout={setDeleteM} fun={DeleteAccount} />}
     </div>
   )

@@ -34,18 +34,19 @@ export const LogOutModal = ({title, yes, no, setLogout, fun}) => {
     )
 }
 
-export const UpdateUserModal = ({setUpdate, user}) => {
+export const UpdateUserModal = ({setUpdate, user, language}) => {
     const [email, setEmail] = useState(user?.email)
     const [fName, setFname] = useState(user?.fname)
     const [lName, setLname] = useState(user?.lname)
     const [phone, setPhone] = useState(user?.phone)
     const [pass, setPass] = useState(user?.pass)
     const [cname, setCname] = useState(user?.cname)
+    const [lang, setLang] = useState(language)
 
     let cond
-    user?.type === "client" && (cond = (email === user?.email && fName === user?.fname && lName === user?.lname && pass === user?.pass) || (email === "" || fName === "" || lName === "" || pass?.length < 6))
-    user?.type === "agent" && ( cond = (email === user?.email && fName === user?.fname && lName === user?.lname && phone === user?.phone && pass === user?.pass) || (email === "" || fName === "" || lName === "" || phone === "" || pass?.length < 6))
-    user?.type === "company" && ( cond = (cname === user?.cname && email === user?.email && phone === user?.phone && pass === user?.pass) || (cname === "" || email === "" || phone === "" || pass?.length < 6))
+    user?.type === "client" && (cond = (email === user?.email && fName === user?.fname && lName === user?.lname && pass === user?.pass && lang === language) || (email === "" || fName === "" || lName === "" || pass?.length < 6))
+    user?.type === "agent" && ( cond = (email === user?.email && fName === user?.fname && lName === user?.lname && phone === user?.phone && pass === user?.pass && lang === language) || (email === "" || fName === "" || lName === "" || phone === "" || pass?.length < 6))
+    user?.type === "company" && ( cond = (cname === user?.cname && email === user?.email && phone === user?.phone && pass === user?.pass && lang === language) || (cname === "" || email === "" || phone === "" || pass?.length < 6))
   
     const data = {
         email: email,
@@ -54,9 +55,17 @@ export const UpdateUserModal = ({setUpdate, user}) => {
         phone: phone,
         pass: pass,
         cname: cname,
+        type: user?.type
     }
 
     console.log(data);
+    console.log(language);
+
+    const Update = () => {
+        localStorage.setItem('Rec-user', JSON.stringify(data))
+        localStorage.setItem('Rec-lang', JSON.stringify(lang))
+        window.location.reload()
+    }
 
     return(
         <div id="popup-modal" tabIndex="-1" className="fixed flex z-50 mx-auto overflow-x-hidden overflow-y-auto inset-0 h-[calc(100%-1rem)] max-h-full">
@@ -105,8 +114,17 @@ export const UpdateUserModal = ({setUpdate, user}) => {
                                 <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your password</label>
                                 <input onChange={(e)=> setPass(e.target.value)} defaultValue={user?.pass} type="password" name="password" id="password" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required />
                             </div>
+                            <div>
+                                <label htmlFor="language" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> Language </label>
+                                <select onChange={(e)=> setLang(e.target.value)} id="countries" class="bg-gray-50 border outline-none border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-orange-500 dark:focus:border-orange-500">
+                                    <option selected>Choose a country</option>
+                                    <option value="en"> English </option>
+                                    <option value="fr">Français</option>
+                                    <option value="ar">اللغة العربية</option>
+                                </select>
+                            </div>
                             
-                            <GeneralBtn text="Update" condition={cond} modal={true} />
+                            <GeneralBtn text="Update" condition={cond} fun={Update} modal={true} />
                         </div>
                     </div>
                 </div>

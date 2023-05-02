@@ -21,17 +21,17 @@ export const Login = (user) => {
 }
 
 export const Lang = () => {
-    const [lang, setLang] = useState("Arabic")
+    const [lang, setLang] = useState("fr")
 
     useEffect(()=> {
-        let langg = JSON.parse(localStorage.getItem("lang"))
+        let langg = JSON.parse(localStorage.getItem("Rec-lang"))
         langg && (setLang(langg))
     }, [])
 
     let langObj
-    lang === "Frensh" && (langObj = Languages?.Frensh)
-    lang === "English" && (langObj = Languages?.English)
-    lang === "Arabic" && (langObj = Languages?.Arabic)
+    lang === "fr" && (langObj = Languages?.Frensh)
+    lang === "en" && (langObj = Languages?.English)
+    lang === "ar" && (langObj = Languages?.Arabic)
 
     return langObj
 }

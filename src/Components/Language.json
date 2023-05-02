@@ -1,6 +1,7 @@
 {
     "English":{
         "title":"en",
+        "title1":"English",
         "navbar":{
             "dashboard":"Dashboard",
             "complaints":"Complaints",
@@ -73,6 +74,7 @@
             "phone":"Phone",
             "type":"Account Type",
             "pass":"Password",
+            "lang":"Language",
             "update":"Update",
             "delete":"Delete"
         },
@@ -103,10 +105,28 @@
             "october":"October",
             "november":"November",
             "december":"December"
+        },
+        "login":{
+            "title":"Log in to your account",
+            "account":"Don't you have an account?",
+            "login":"Login",
+            "signup":"Sign up"
+        },
+        "signup":{
+            "title":"Choose if you are an Agent or Client or Company",
+            "client":"Client",
+            "agent":"Agent",
+            "company": "Company",
+            "next":"Next",
+            "account":"You have an account?",
+            "Cclient":"Create client account",
+            "Cagent":"Create agent account",
+            "Ccompany":"Create company account"
         }
     },
     "Frensh":{
         "title":"fr",
+        "title1":"Français",
         "navbar":{
             "dashboard":"Tableau de bord",
             "complaints":"Plaintes",
@@ -179,6 +199,7 @@
             "phone":"Téléphone",
             "type":"Type de compte",
             "pass":"Mot de passe",
+            "lang":"Langue",
             "update":"Mise à jour",
             "delete":"Supprimer"
         },
@@ -208,10 +229,28 @@
             "october":"Octobre",
             "november":"Novembre",
             "december":"Décembre"
+        },
+        "login":{
+            "title":"Connectez-vous à votre compte",
+            "account":"Vous n'avez pas de compte ?",
+            "login":"Connexion",
+            "signup":"S'inscrire"
+        },
+        "signup":{
+            "title":"Choisissez si vous êtes un agent ou un client ou une entreprise",
+            "client":"Client",
+            "agent":"Agent",
+            "company": "Entreprise",
+            "next":"Suivant",
+            "account":"Vous avez un compte ?",
+            "Cclient":"Créer un compte client",
+            "Cagent":"Créer un compte d'agent",
+            "Ccompany":"Créer un compte d'entreprise"
         }
     },
     "Arabic":{
         "title":"ar",
+        "title1":"اللغة العربية",
         "navbar":{
             "dashboard":"لوحة القيادة",
             "complaints":"الشكاوي",
@@ -284,6 +323,7 @@
             "phone":"الهاتف",
             "type":"نوع الحساب",
             "pass":"كلمة المرور",
+            "lang":"اللغة",
             "update":"تحديث",
             "delete":"حذف"
         },
@@ -313,6 +353,23 @@
             "october":"أكتوبر",
             "november":"نونمبر",
             "december":"دجنبر"
+        },
+        "login":{
+            "title":"تسجيل الدخول إلى حسابك",
+            "account":"ليس لديك حساب؟",
+            "login":"تسجيل الدخول",
+            "signup":"اشتراك"
+        },
+        "signup":{
+            "title":"اختر ما إذا كنت وكيلاً أو عميلاً أو شركة",
+            "client":"عميل",
+            "agent":"عامل",
+            "company": "شركة",
+            "next":"التالي",
+            "account":"لديك حساب؟",
+            "Cclient":"إنشاء حساب العميل",
+            "Cagent":"إنشاء حساب وكيل",
+            "Ccompany":"إنشاء حساب الشركة"
         }
     }
 }
