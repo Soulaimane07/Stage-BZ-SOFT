@@ -1,7 +1,10 @@
 import React, {useState} from 'react'
 import { GeneralBtn } from '../Buttons'
+import { Lang } from '../Functions'
+import Comment from './Comment'
+import {BiUser} from 'react-icons/bi'
 
-function ComplaintModal({Language, data, setComplaintBody, setDeleteC}) {
+function ComplaintModal({data, setComplaintBody, setDeleteC}) {
     const deleteC = () => {
         setDeleteC(true)
     }
@@ -20,6 +23,8 @@ function ComplaintModal({Language, data, setComplaintBody, setDeleteC}) {
         alert("Commente succed !!!")
         setCommenter(false)
     }
+
+    const lang = Lang()
 
     return(
         <div id="popup-modal" tabIndex="-1" className="fixed flex z-50 mx-auto overflow-x-hidden overflow-y-auto inset-0 h-[calc(100%-1rem)] max-h-full">
@@ -41,29 +46,34 @@ function ComplaintModal({Language, data, setComplaintBody, setDeleteC}) {
                                 <h5 className="mb-4 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"> {data?.title} </h5>
                                 <p className="mb-2 font-normal text-gray-500 dark:text-gray-300"> {data?.property} </p>
                                 <p className="mb-3 font-normal text-gray-700 dark:text-gray-400"> {data?.desc} </p>
-                                
                             </div>
-                            {commenter &&
-                                <>
-                                    <hr className="mt-8 mb-4 border-gray-200 sm:mx-auto dark:border-gray-500 lg:my-8 lg:mb-4" />
-                                    <div className="px-5 pt-5">
-                                        <h5 className="mb-4 text-xl font-bold tracking-tight text-gray-900 dark:text-white"> {Language?.complaints?.commentaire} </h5>
-
-                                        <textarea id="message" rows="4" class=" outline-none block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-orange-500 focus:border-orange-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-orange-500 dark:focus:border-orange-500" placeholder={Language?.complaints?.message}></textarea>
-
-                                        <div className="mt-4 flex justify-between space-x-4">
-                                            <GeneralBtn text={Language?.buttons?.post} fun={Commente} condition={false} />
-                                            <GeneralBtn text={Language?.buttons?.cancel} fun={CancelCommante} condition={false} role="delete" />
+                            <div className='mb-10'>
+                                <hr className="mb-4 border-gray-200 sm:mx-auto dark:border-gray-500 lg:my-0 lg:mb-4" />
+                                <div className='mx-6'>
+                                    <h1 className='text-xl text-white' > {lang?.complaints?.comments} ( {data?.comments?.length} ) </h1>
+                                    {data?.comments?.map((item,key)=>(
+                                        <div className='mt-2 mb-6 bg-gray-800 px-4 py-4 rounded-lg' key={key}>
+                                            <div className=' flex items-center mb-2'>
+                                                <div className="text-gray-400 flex items-center">
+                                                    <BiUser size={20} />
+                                                    <h1 className='ml-1'> {item.writer} </h1>
+                                                </div>
+                                                <h4 className='ml-2 text-gray-600'> / {item.date} </h4>
+                                            </div>
+                                            <p className='text-gray-400'> {item.text} </p>
                                         </div>
-                                    </div>
-                                </>
-                            }
+                                    ))}
+                                </div>
+                                {commenter &&
+                                    <Comment Commente={Commente} CancelCommante={CancelCommante} />
+                                }
+                            </div>
                         </div>
                         
                         {!commenter &&
-                            <div className="flex justify-between space-x-4">
-                                <GeneralBtn text={Language?.buttons?.comment} fun={OpenCommente} condition={false} />
-                                <GeneralBtn text={Language?.buttons?.delete} fun={deleteC} condition={false} role="delete" />
+                            <div className="mt-6 flex justify-between space-x-4">
+                                <GeneralBtn text={lang?.buttons?.comment} fun={OpenCommente} condition={false} />
+                                <GeneralBtn text={lang?.buttons?.delete} fun={deleteC} condition={false} role="delete" />
                             </div>
                         }
                     </div>

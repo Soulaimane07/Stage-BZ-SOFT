@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import { Lang } from './Functions'
 
 function Footer({pages}) {
+    const year = new Date().getFullYear()
+
   return (
     <footer className={`${Lang()?.title === "ar" && 'text-right'} footer bg-gray-900`}>
         <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
@@ -32,13 +34,13 @@ function Footer({pages}) {
                         </ul>
                     </div>
                     <div>
-                        <h2 className="mb-6 text-sm font-semibold uppercase text-white">Legal</h2>
+                        <h2 className="mb-6 text-sm font-semibold uppercase text-white"> {Lang()?.footer?.legal} </h2>
                         <ul className="space-y-4 text-gray-600 dark:text-gray-400 font-medium">
                             <li>
-                                <a href="#" className="hover:underline">Privacy Policy</a>
+                                <a href="#" className="hover:underline"> {Lang()?.footer?.privacy} </a>
                             </li>
                             <li>
-                                <a href="#" className="hover:underline">Terms &amp; Conditions</a>
+                                <a href="#" className="hover:underline"> {Lang()?.footer?.terms} </a>
                             </li>
                         </ul>
                     </div>
@@ -48,7 +50,7 @@ function Footer({pages}) {
             <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
             
             <div className="sm:flex sm:items-center sm:justify-between">
-                <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a href="https://flowbite.com/" className="hover:underline">Flowbite™</a>. {Lang()?.footer.rights}
+                <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">© {year} <a href="https://flowbite.com/" className="hover:underline">Flowbite™</a>. {Lang()?.footer.rights}
                 </span>
                 <div className="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
                     <a href="#" className="text-gray-500 hover:text-gray-900 dark:hover:text-white">

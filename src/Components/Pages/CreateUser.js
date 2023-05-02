@@ -3,21 +3,24 @@ import CreateClient from './CreateUser/CreateClient'
 import CreateAgent from './CreateUser/CreateAgent'
 import CreateCompany from './CreateUser/CreateCompany'
 import { useNavigate } from 'react-router-dom'
+import { Lang } from '../Functions'
 
 function CreateUser() {
+    const lang = Lang()
+
     const [plan, setPlan] = useState("")
 
     const plans = [
         {
-            "title":"Client",
+            "title":lang?.Cuser?.client,
             "val":"client"
         },
         {
-            "title":"Agent",
+            "title":lang?.Cuser?.agent,
             "val":"agent"
         },
         {
-            "title":"Company",
+            "title":lang?.Cuser?.company,
             "val":"company"
         },
     ]
@@ -28,9 +31,12 @@ function CreateUser() {
         console.log(user);
     }
 
+
   return (
-    <div className='max-w-screen-xl mx-auto p-4'>
-        <h1 className="text-2xl mt-4 lg:mt-0 font-extrabold text-slate-900 md:text-3xl lg:text-4xl mb-10"> Create User</h1>
+    <div className={`${lang?.title === "ar" && "text-right"} max-w-screen-xl mx-auto p-4`}>
+        <h1 className="text-2xl mt-4 lg:mt-0 font-extrabold text-slate-900 md:text-3xl lg:text-4xl mb-10"> 
+            {lang?.Cuser?.title}
+        </h1>
         <div className="px-8 md:px-40 lg:px-80 mb-40">
             <div>
                 <div className='mb-10 createUser space-x-4 flex justify-between'>
@@ -41,7 +47,7 @@ function CreateUser() {
                     ))}
                 </div>
 
-                <div className='mx-10'>
+                <div className='mx-2 md:mx-6 lg:mx-10'>
                     {plan === "client" && <CreateClient fun={Create} />}
                     {plan === "agent" && <CreateAgent fun={Create} />}
                     {plan === "company" && <CreateCompany fun={Create} />}

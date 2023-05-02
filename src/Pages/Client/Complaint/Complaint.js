@@ -15,12 +15,12 @@ function Complaint({data}) {
     setComplaintBody(null)
   }
   
-  const type = Lang()?.title
+  const lang = Lang()
 
   return (
-    <div className={`${type === "ar" && 'text-right'} max-w-screen-xl mx-auto mb-0 p-4 pb-0`}>
+    <div className={`${lang.title === "ar" && 'text-right'} max-w-screen-xl mx-auto mb-0 p-4 pb-0`}>
         <h1 className="text-2xl mt-4 lg:mt-0 font-extrabold text-slate-900 md:text-3xl lg:text-4xl"> 
-          {Lang()?.complaints.complaints} ( {data?.length} )
+          {lang.complaints.complaints} ( {data?.length} )
         </h1>
 
         <div className='my-10'>
@@ -28,13 +28,13 @@ function Complaint({data}) {
               ?
                 <div className='mb-20 grid grid-cols-1 gap-6 md:grid-cols-3 lg:grid-cols-4 '>
                   {data?.map((item,key)=>(
-                    <ComplaintItem Language={Lang()?.complaints} data={item} key={key} id={key} setComplaintBody={setComplaintBody} />
+                    <ComplaintItem type={lang.title} Language={lang.complaints} data={item} key={key} id={key} setComplaintBody={setComplaintBody} />
                   ))}
 
-                  {complaintBody && <ComplaintModal Language={Lang()} data={Lang()} setComplaintBody={setComplaintBody} setDeleteC={setDeleteC} />}
-                  {(deleteC && complaintBody) && <LogOutModal Language={Lang()?.alert} fun={DeleteC} setLogout={setDeleteC} />}
+                  {complaintBody && <ComplaintModal data={complaintBody} setComplaintBody={setComplaintBody} setDeleteC={setDeleteC} />}
+                  {(deleteC && complaintBody) && <LogOutModal title={lang.alert.complaint} yes={lang.alert.yes} no={lang.alert.no} fun={DeleteC} setLogout={setDeleteC} />}
                 </div>
-              : <NoData stat="complaint" create="Complaint" Language={Lang()?.complaints.nodata} />
+              : <NoData stat="complaint" create="Complaint" Language={lang.complaints.nodata} />
             }
         </div>
     </div>

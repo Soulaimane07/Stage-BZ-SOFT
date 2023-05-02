@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { GeneralBtn } from '../../Buttons'
+import { Lang } from '../../Functions'
 
 function CreateCompany({fun}) {
     const [cName, setCname] = useState("")
@@ -17,26 +18,28 @@ function CreateCompany({fun}) {
         type: "company"
     }
 
+    const lang = Lang()
+
   return (
     <div>
         <div className="mb-6">
-            <label htmlFor="company name" className="block mb-2 font-medium">Company Name</label>
+            <label htmlFor="company name" className="block mb-2 font-medium"> {lang?.profile?.cname} </label>
             <input type="text" id="company name" required onChange={(e)=> setCname(e.target.value)} />
         </div>
         <div className="mb-6">
-            <label htmlFor="email" className="block mb-2 font-medium">Email Adress</label>
+            <label htmlFor="email" className="block mb-2 font-medium"> {lang?.profile?.email} </label>
             <input type="email" id="email" required onChange={(e)=> setEmail(e.target.value)} />
         </div>
         <div className="mb-6">
-            <label htmlFor="phone" className="block mb-2 font-medium">Phone</label>
+            <label htmlFor="phone" className="block mb-2 font-medium"> {lang?.profile?.phone} </label>
             <input type="tel" id="phone" required onChange={(e)=> setPhone(e.target.value)} />
         </div>
         <div className="mb-6">
-            <label htmlFor="password" className="block mb-2 font-medium">Password</label>
+            <label htmlFor="password" className="block mb-2 font-medium"> {lang?.profile?.pass} </label>
             <input type="password" id="password" required onChange={(e)=> setPass(e.target.value)} />
         </div>
 
-        <GeneralBtn text="Create" condition={cond} fun={fun} data={company} />
+        <GeneralBtn text={lang?.Ccreate?.create} condition={cond} fun={fun} data={company} />
     </div>
   )
 }

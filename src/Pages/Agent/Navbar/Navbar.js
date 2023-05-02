@@ -27,11 +27,11 @@ function Navbar({user}) {
         },
     ]
 
-    const type = Lang()?.title
+    const lang = Lang()
 
   return (
     <div className='Navbar relative bg-gray-800 border-gray-400'>
-        <div className={`${type === "ar" && 'flex-row-reverse'} max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4`}>
+        <div className={`${lang.title === "ar" && 'flex-row-reverse'} max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4`}>
             <Link to="/" className="flex items-center">
                 <img src="./images/logo.png" className="h-12 mr-3" alt="Logo" />
             </Link>
@@ -42,16 +42,16 @@ function Navbar({user}) {
                     <BiUser />
                 </button>
 
-                <div className={`${account && "hidden"} ${type === "ar" ? "right-auto left-0 md:right-auto lg:right-auto md:left-0 lg:left-16" : "right-0 md:right-0 lg:right-16"} z-50 absolute top-16 my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-800 dark:divide-gray-600 md:top-16 lg:top-16 `} id="user-dropdown">
+                <div className={`${account && "hidden"} ${lang.title === "ar" ? "right-auto left-0 md:right-auto lg:right-auto md:left-0 lg:left-16" : "right-0 md:right-0 lg:right-16"} z-50 absolute top-16 my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-800 dark:divide-gray-600 md:top-16 lg:top-16 `} id="user-dropdown">
                     <div className="px-4 py-3">
                         <span className="block text-sm text-gray-900 dark:text-white"> {user?.fname} </span>
                         <span className="block text-sm  text-gray-500 truncate dark:text-gray-400"> {user?.email} </span>
                     </div>
-                    <ul className={`${type === 'ar' ? 'text-right' : 'text-left'} py-2`} aria-labelledby="user-menu-button">
+                    <ul className={`${lang.title === 'ar' ? 'text-right' : 'text-left'} py-2`} aria-labelledby="user-menu-button">
                         <Link onClick={()=> setAccount(true)} to={"/profile"} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
                             {Lang()?.navbar.profile}
                         </Link>
-                        <button onClick={()=> setLogout(true)} className={`${type === 'ar' ? 'text-right' : 'text-left'} block w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white`}>
+                        <button onClick={()=> setLogout(true)} className={`${lang.title === 'ar' ? 'text-right' : 'text-left'} block w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white`}>
                             {Lang()?.navbar.signout}
                         </button>
                     </ul>
@@ -62,14 +62,14 @@ function Navbar({user}) {
         <nav className="bg-gray-700">
             <div className="max-w-screen-xl px-4 py-3 mx-auto">
                 <div className="flex items-center">
-                    <ul className={`${type === "ar" ? ("flex-row-reverse") : 'space-x-8'} w-full flex  font-medium  text-sm`}>
+                    <ul className={`${lang.title === "ar" ? ("flex-row-reverse") : 'space-x-4'} w-full flex  font-medium  text-sm`}>
                         {pages.map((item,key)=>(
                             <div>
                             <NavLink 
                                 key={key}
                                 to={item.link} 
                                 activateclassname="active"
-                                className={(navData) => navData.isActive ? `text-orange-400 ${type === 'ar' && key === 0 ? 'mr-0' : 'mr-8'}` : `${type === 'ar' && key === 0 ? 'mr-0' : 'mr-8'} text-white hover:text-orange-400`}
+                                className={(navData) => navData.isActive ? `text-orange-400 ${lang.title === 'ar' && key === 0 ? 'mr-0' : 'mr-8'}` : `${lang.title === 'ar' && key === 0 ? 'mr-0' : 'mr-8'} text-white hover:text-orange-400`}
                             >
                                 {item.title}
                             </NavLink>
@@ -81,7 +81,7 @@ function Navbar({user}) {
             </div>
         </nav>
 
-        {logOut &&<LogOutModal text="Are you sure you want to Log out?" setLogout={setLogout} />}
+        {logOut &&<LogOutModal title={lang?.alert?.signout} yes={lang?.alert?.yes} no={lang?.alert?.no} setLogout={setLogout} />}
     </div>
   )
 }

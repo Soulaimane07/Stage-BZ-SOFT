@@ -26,19 +26,24 @@
             "complaints":"Complaints",
             "users":"Users",
             "profile":"Prodile",
-            "rights":"All Rights Reserved."
+            "rights":"All Rights Reserved.",
+            "legal":"Legal",
+            "privacy":"Privacy Policy",
+            "terms":"Terms & Conditions"
         },
         "complaints":{
             "complaints":"Complaints",
             "read":"Read more",
             "message":"Write your comment here...",
             "commentaire":"Comment",
+            "comments":"Comments",
             "nodata":{
                 "nodata":"No complaint available",
                 "create":"Create Complaint"
             }
         },
         "Ccreate":{
+            "image":"Click to upload image",
             "Ptitle":"Create Complaint",
             "title":"Title",
             "priority":"Priority",
@@ -52,6 +57,12 @@
                 "nodata":"No users available",
                 "create":"Create User"
             }
+        },
+        "Cuser":{
+            "title":"Create User",
+            "client":"Client",
+            "agent":"Agent",
+            "company": "Company"
         },
         "profile":{
             "title":"Your Profile",
@@ -69,12 +80,15 @@
             "comment":"Comment",
             "delete":"Delete",
             "post":"Post",
-            "cancel":"Cancel"
+            "cancel":"Cancel",
+            "create":"Create"
         },
         "alert":{
             "yes":"Yes, I'm sure",
             "no":"No, cancel",
-            "complaint":"Are you sure you want to Delete this complaint?"
+            "complaint":"Are you sure you want to Delete this complaint?",
+            "signout":"Are you sure you want to Sign out?",
+            "delete":"Are you sure you want to Delete your account?"
         },
         "months":{
             "january":"January",
@@ -118,19 +132,24 @@
             "complaints":"Plaintes",
             "users":"Utilisateurs",
             "profile":"Profil",
-            "rights":"Tous les droits sont réservés."
+            "rights":"Tous les droits sont réservés.",
+            "legal":"Juridique",
+            "privacy":"Politique de confidentialité",
+            "terms":"termes et conditions"
         },
         "complaints":{
             "complaints":"Plaintes",
             "read":"En savoir plus",
             "message":"Écrivez votre commentaire ici...",
             "commentaire":"Commentaire",
+            "comments":"Commentaires",
             "nodata":{
                 "nodata":"Aucune plainte disponible",
                 "create":"Créer une plainte"
             }
         },
         "Ccreate":{
+            "image":"Cliquez pour télécharger l'image",
             "Ptitle":"Créer une réclamation",
             "title":"Titre",
             "priority":"Priorité",
@@ -144,6 +163,12 @@
                 "nodata":"Aucun utilisateur disponible",
                 "create":"Créer un utilisateur"
             }
+        },
+        "Cuser":{
+            "title":"Créer un utilisateur",
+            "client":"Client",
+            "agent":"Agent",
+            "company": "Entreprise"
         },
         "profile":{
             "title":"Votre profil",
@@ -166,7 +191,9 @@
         "alert":{
             "yes":"Oui, je suis sûr",
             "no":"Non, annuler",
-            "complaint":"Voulez-vous vraiment supprimer cette réclamation ?"
+            "complaint":"Voulez-vous vraiment supprimer cette réclamation ?",
+            "signout":"Êtes-vous certain de vouloir vous déconnecter?",
+            "delete":"Êtes-vous sûr de vouloir supprimer votre compte ?"
         },
         "months":{
             "january":"Janvier",
@@ -210,22 +237,27 @@
             "complaints":"الشكاوي",
             "users":"المستخدمون",
             "profile":"الحساب",
-            "rights":"كل الحقوق محفوظة."
+            "rights":"كل الحقوق محفوظة.",
+            "legal":"قانوني",
+            "privacy":"سياسة الخصوصية",
+            "terms":"البنود و الظروف"
         },
         "complaints":{
             "complaints":"الشكاوي",
             "read":"اقرأ أكثر",
             "message":"أكتب تعليقك هنا...",
             "commentaire":"تعليق",
+            "comments":"تعليقات",
             "nodata":{
                 "nodata":"لا توجد شكوى",
                 "create":"إنشاء شكوى"
             }
         },
         "Ccreate":{
+            "image":"انقر لتحميل الصورة",
             "Ptitle":"إنشاء شكوى",
             "title":"العنوان",
-            "priority":"Priority",
+            "priority":"أولوية",
             "desc":"الوصف",
             "message":"اكتب رسالتك هنا...",
             "create":"إنشاء"
@@ -236,6 +268,12 @@
                 "nodata":"لا يوجد مستخدمون متاحون",
                 "create":"إنشاء مستخدم"
             }
+        },
+        "Cuser":{
+            "title":"إنشاء مستخدم",
+            "client":"عميل",
+            "agent":"عامل",
+            "company": "شركة"
         },
         "profile":{
             "title":"ملفك الشخصي",
@@ -258,7 +296,9 @@
         "alert":{
             "yes":"نعم، أنا متأكد",
             "no":"لا ، إلغاء",
-            "complaint":"هل أنت متأكد أنك تريد حذف هذه الشكوى؟"
+            "complaint":"هل أنت متأكد أنك تريد حذف هذه الشكوى؟",
+            "signout":"هل أنت متأكد أنك تريد الخروج؟",
+            "delete":"هل انت متأكد انك تريد حذف حسابك؟"
         },
         "months":{
             "january":"يناير",

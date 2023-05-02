@@ -6,6 +6,7 @@ import Complaint from '../../Pages/Client/Complaint/Complaint'
 import Create from '../../Pages/Client/Complaint/Create'
 import Profile from '../../Components/Pages/Profile'
 import Footer from '../../Components/Footer'
+import { Lang } from '../../Components/Functions'
 
 function ClientStack({user}) {
   const complaintsList = [
@@ -13,13 +14,13 @@ function ClientStack({user}) {
 
   const footerPages = [
     {
-      "title":"Dashboard",
+      "title": Lang()?.footer.dashboard,
       "link":"/"
     },
     {
-      "title":"Complaints",
+      "title": Lang()?.footer.complaints,
       "link":"/complaints"
-    },
+    }
   ]
 
   return (
