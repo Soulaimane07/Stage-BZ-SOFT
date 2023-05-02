@@ -6,7 +6,7 @@
 
 .AuthImage {
     min-height: 100vh;
-    background-image: url('/public/images/image1.jpg');
+    background-image: url('/public/images/image2.jpg');
     background-position: center;
     background-size: cover;
 }
