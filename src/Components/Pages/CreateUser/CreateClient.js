@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { GeneralBtn } from '../../Buttons'
 import { Lang } from '../../Functions'
 
-function CreateClient({fun}) {
+function CreateClient({fun, loading}) {
     const [email, setEmail] = useState("")
     const [fName, setFname] = useState("")
     const [lName, setLname] = useState("")
@@ -38,7 +38,7 @@ function CreateClient({fun}) {
             <input type="password" id="password" required onChange={(e)=> setPass(e.target.value)} />
         </div>
 
-        <GeneralBtn text={lang?.Ccreate?.create} condition={cond} fun={fun} data={client} />
+        <GeneralBtn text={lang?.Ccreate?.create} condition={cond} fun={fun} data={client} loading={loading} />
     </div>
   )
 }

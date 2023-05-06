@@ -63,12 +63,12 @@ function Profile({user}) {
                         <h1 className="font-bold">{user?.type} </h1>
                     </div>
                 }
-                {user?.pass &&
+                {/* {user?.pass &&
                     <div className={`${lang.title === "ar" && "flex-row-reverse"} mb-6 flex justify-between`}>
                         <label htmlFor="password" className="block mb-2 font-medium"> {lang?.profile.pass} </label>
                         <h1 className="font-bold">{user?.pass} </h1>
                     </div>
-                }
+                } */}
                 <div className={`${lang.title === "ar" && "flex-row-reverse"} mb-6 flex justify-between`}>
                     <label htmlFor="password" className="block mb-2 font-medium"> {lang?.profile.lang} </label>
                     <h1 className="font-bold"> {lang?.title1} </h1>

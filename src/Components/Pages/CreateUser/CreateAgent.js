@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { GeneralBtn } from '../../Buttons'
 import { Lang } from '../../Functions'
 
-function CreateAgent({fun}) {
+function CreateAgent({fun, loading}) {
 const [email, setEmail] = useState("")
   const [fName, setFname] = useState("")
   const [lName, setLname] = useState("")
@@ -45,7 +45,7 @@ const [email, setEmail] = useState("")
             <input type="password" id="password" required onChange={(e)=> setPass(e.target.value)} />
         </div>
 
-        <GeneralBtn text={lang?.Ccreate?.create} condition={cond} fun={fun} data={agent} />
+        <GeneralBtn text={lang?.Ccreate?.create} condition={cond} fun={fun} data={agent} loading={loading} />
     </div>
   )
 }

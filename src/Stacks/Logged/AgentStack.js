@@ -8,7 +8,7 @@ import Users from '../../Pages/Agent/Users/Users'
 import Create from '../../Pages/Client/Complaint/Create'
 import CreateUser from '../../Components/Pages/CreateUser'
 import Footer from '../../Components/Footer'
-import { Lang } from '../../Components/Functions'
+import { GetData, Lang } from '../../Components/Functions'
 
 function AgentStack({user}) {
   const complaintsList = [
@@ -86,7 +86,7 @@ function AgentStack({user}) {
   ]
   // const complaintsList = []
   
-  const usersList = []
+  const usersList = GetData('/users').data 
 
   const footerPages = [
     {
