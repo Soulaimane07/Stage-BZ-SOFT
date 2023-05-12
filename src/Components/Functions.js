@@ -55,3 +55,30 @@ export const GetData = (link) => {
     console.log(link," ==>",data);
     return {data}
 }
+
+export const GetUsers = (data) => {
+    let clients = 0
+    let agents = 0
+    let companies = 0
+  
+    data.map((item)=>(
+      item.type === "client" && (clients += 1),
+      item.type === "agent" && (agents += 1),
+      item.type === "company" && (companies += 1)
+    ))
+  
+    return {clients, agents, companies}
+}
+
+export const deleteUser = (id, fun) => {
+    axios.delete(`${ServerUrl}/users/${id}`)
+        .then(res => {
+            console.log(res);
+            fun()
+        })
+}
+
+export const ChangeLang = (lang) => {
+    localStorage.setItem('Rec-lang', JSON.stringify(lang))
+    window.location.reload()
+}

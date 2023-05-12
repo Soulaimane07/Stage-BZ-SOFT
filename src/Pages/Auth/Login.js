@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { Lang, ServerUrl } from '../../Components/Functions'
 import axios from 'axios'
 import Alert from '../../Components/Alert'
+import LanguageBox from '../../Components/LanguageBox'
 var bcrypt = require('bcryptjs');
 
 function Login() {
@@ -41,11 +42,13 @@ function Login() {
             .catch(err=> {
                 setLoading(false)
                 console.log(err);
-                setMessage(err.response.data.message)
+                // setMessage(err.response.data.message)
             })
     }
 
     const lang = Lang()
+
+    
 
   return (
     <div className={`${lang?.title === "ar" && "text-right"} Login grid mx-auto xl:gap-0 lg:grid-cols-12`}>
@@ -70,6 +73,8 @@ function Login() {
                     <p> {lang?.login.account} </p>
                     <Link to={"/signup"} className='text-orange-400 ml-2'> {lang?.login.signup} </Link>
                 </div>
+
+                <LanguageBox />
             </div>
         </div>
         <Image />

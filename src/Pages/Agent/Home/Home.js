@@ -5,7 +5,7 @@ import {BiClipboard} from 'react-icons/bi'
 
 import { LineChart, PieChart } from '../../../Components/Charts';
 import Box from '../../../Components/Box';
-import { Lang } from '../../../Components/Functions';
+import { GetUsers, Lang } from '../../../Components/Functions';
 
 function Home({complaints, users}) {
   const articles = [
@@ -18,7 +18,7 @@ function Home({complaints, users}) {
     {
       "icon":<FiUsers />,
       "title": Lang()?.home.users,
-      "text":`${Lang()?.home.users}: ${users?.length} | ${Lang()?.home.clients}: ${4} | ${Lang()?.home.agents}: ${2} | ${Lang()?.home.companies}: ${1}`,
+      "text":`${Lang()?.home.users}: ${users?.length} | ${Lang()?.home.clients}: ${GetUsers(users)?.clients} | ${Lang()?.home.agents}: ${GetUsers(users)?.agents} | ${Lang()?.home.companies}: ${GetUsers(users)?.companies}`,
       "link":"/users"
     },
   ]
@@ -46,7 +46,7 @@ function Home({complaints, users}) {
     datasets: [
       {
         label: '# of Votes',
-        data: [12, 4, 6],
+        data: [GetUsers(users)?.clients, GetUsers(users)?.agents, GetUsers(users)?.companies],
         backgroundColor: [
           '#0bf18649',
           '#f92e2e2f',

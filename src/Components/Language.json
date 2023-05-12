@@ -50,7 +50,8 @@
             "priority":"Priority",
             "desc":"Description",
             "message":"Write your message here...",
-            "create":"Create"
+            "create":"Create",
+            "createUser": "Create User"
         },
         "users":{
             "users":"Users",

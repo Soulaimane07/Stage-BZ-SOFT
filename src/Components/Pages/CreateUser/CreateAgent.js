@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import { GeneralBtn } from '../../Buttons'
 import { Lang } from '../../Functions'
+import Alert from '../../Alert'
 
-function CreateAgent({fun, loading}) {
+function CreateAgent({fun, message, loading}) {
 const [email, setEmail] = useState("")
   const [fName, setFname] = useState("")
   const [lName, setLname] = useState("")
@@ -24,6 +25,8 @@ const [email, setEmail] = useState("")
 
   return (
     <div>
+        {message && <Alert message={message} />}
+
         <div className="mb-6">
             <label htmlFor="email" className="block mb-2 font-medium"> {lang?.profile?.email} </label>
             <input type="email" id="email" required onChange={(e)=> setEmail(e.target.value)} />

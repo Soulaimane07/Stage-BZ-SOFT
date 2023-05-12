@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import { GeneralBtn } from '../../Buttons'
 import { Lang } from '../../Functions'
+import Alert from '../../Alert'
 
-function CreateCompany({fun, loading}) {
+function CreateCompany({fun, message, loading}) {
     const [cName, setCname] = useState("")
     const [email, setEmail] = useState("")
     const [phone, setPhone] = useState("")
@@ -22,6 +23,8 @@ function CreateCompany({fun, loading}) {
 
   return (
     <div>
+        {message && <Alert message={message} />}
+
         <div className="mb-6">
             <label htmlFor="company name" className="block mb-2 font-medium"> {lang?.profile?.cname} </label>
             <input type="text" id="company name" required onChange={(e)=> setCname(e.target.value)} />

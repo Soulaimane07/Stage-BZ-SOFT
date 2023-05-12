@@ -3,12 +3,15 @@ import CreateClient from './CreateUser/CreateClient'
 import CreateAgent from './CreateUser/CreateAgent'
 import CreateCompany from './CreateUser/CreateCompany'
 import { useNavigate } from 'react-router-dom'
-import { Lang } from '../Functions'
+import { Lang, ServerUrl } from '../Functions'
+import axios from 'axios'
 
 function CreateUser() {
     const lang = Lang()
 
     const [plan, setPlan] = useState("")
+    const [message, setMessage] = useState(null)
+    const [loading, setLoading] = useState(false)
 
     const plans = [
         {
@@ -27,8 +30,20 @@ function CreateUser() {
 
     const navigate = useNavigate('')
     const Create = (user) => {
-        navigate('/users')
-        console.log(user);
+        setLoading(true)
+        setMessage(null)
+
+        axios.post(`${ServerUrl}/users`, user)
+            .then(res=> {
+                navigate('/users')
+                console.log(res.data);
+                setLoading(false)
+            })
+            .catch(err=> {
+                console.log(err);
+                setMessage(err?.response?.data?.message)
+                setLoading(false)
+            })
     }
 
 
@@ -48,9 +63,9 @@ function CreateUser() {
                 </div>
 
                 <div className='mx-2 md:mx-6 lg:mx-10'>
-                    {plan === "client" && <CreateClient fun={Create} />}
-                    {plan === "agent" && <CreateAgent fun={Create} />}
-                    {plan === "company" && <CreateCompany fun={Create} />}
+                    {plan === "client" && <CreateClient fun={Create} message={message} loading={loading} />}
+                    {plan === "agent" && <CreateAgent fun={Create} message={message} loading={loading} />}
+                    {plan === "company" && <CreateCompany fun={Create} message={message} loading={loading} />}
                 </div>
             </div>
         </div>

@@ -3,6 +3,7 @@ import Image from '../Image'
 import Plans from './Plans'
 import Register from './Register'
 import { Lang } from '../../../Components/Functions'
+import LanguageBox from '../../../Components/LanguageBox'
 
 function Signup() {
     const [step, setStep] = useState(0)
@@ -16,6 +17,8 @@ function Signup() {
 
             {step === 0 && <Plans setStep={setStep} plan={plan} setPlan={setPlan} />}
             {step === 1 && <Register step={step} setStep={setStep} plan={plan} />}
+
+            <LanguageBox />
         </div>
     </div>
   )

@@ -1,6 +1,7 @@
 import React from 'react'
 import NoData from '../../../Components/NoData'
 import { Lang } from '../../../Components/Functions'
+import { Link } from 'react-router-dom'
 
 function Users(props) {
   const lang = Lang()
@@ -9,9 +10,16 @@ function Users(props) {
 
   return (
     <div className={`${lang.title === "ar" && "text-right"} max-w-screen-xl mx-auto p-4`}>
-        <h1 className="text-2xl mt-4 lg:mt-0 font-extrabold text-slate-900 md:text-3xl lg:text-4xl">
-          {lang?.users.users} ( {data?.length} )
-        </h1>
+        <div className='flex justify-between items-center mt-4'>
+            <h1 className="text-2xl lg:mt-0 font-extrabold text-slate-900 md:text-3xl lg:text-4xl">
+                {lang?.users.users} ( {data?.length} )
+            </h1>
+            {data?.length > 0 && 
+                <Link to={'create'} className="focus:outline-none text-center text-white bg-orange-400 hover:bg-orange-600 focus:ring-4 focus:ring-orange-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:focus:ring-orange-500 w-40">
+                    {lang?.Ccreate?.createUser}
+                </Link>
+            }
+        </div>
 
         <div className='mt-10'>
             {data?.length > 0 ?
@@ -33,17 +41,20 @@ function Users(props) {
                                       Last Name
                                   </th>
                                   <th scope="col" class="px-6 py-3">
+                                      Phone
+                                  </th>
+                                  <th scope="col" class="px-6 py-3">
                                       Type
                                   </th>
                               </tr>
                           </thead>
                           <tbody>
                             {data?.map((item,key)=>(
-                              <tr key={key} class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                              <tr key={key} class="bg-white border-b text-gray-600">
                                   <td class="pl-6 py-4">
-                                      {key}
+                                      {key+1}
                                   </td>
-                                  <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                  <th scope="row" class="px-6 py-4 font-medium  whitespace-nowrap">
                                       {item.email}
                                   </th>
                                   <td class="px-6 py-4">
@@ -51,6 +62,9 @@ function Users(props) {
                                   </td>
                                   <td class="px-6 py-4">
                                       {item.lname}
+                                  </td>
+                                  <td class="px-6 py-4">
+                                      {item.phone}
                                   </td>
                                   <td class="px-6 py-4">
                                       {item.type}

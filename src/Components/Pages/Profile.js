@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { GeneralBtn } from '../Buttons'
 import { LogOutModal, UpdateUserModal } from '../Modals'
-import { Lang } from '../Functions'
+import { Lang, deleteUser } from '../Functions'
+import { useNavigate } from 'react-router-dom'
 
 function Profile({user}) {
     const [update, setUpdate] = useState(false)
@@ -13,8 +14,16 @@ function Profile({user}) {
     const DeleteOpen = () => {
         setDeleteM(true)
     }
+
+    const navigate = useNavigate()
+    const AfterDelete = () => {
+        localStorage.removeItem('Rec-user')
+        navigate('/')
+        window.location.reload()
+    }
+
     const DeleteAccount = () => {
-        alert("Deleted!!!")
+        deleteUser(user.id, AfterDelete)
     }
 
   const lang = Lang()

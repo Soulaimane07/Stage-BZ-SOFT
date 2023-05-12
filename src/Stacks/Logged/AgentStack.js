@@ -109,7 +109,7 @@ function AgentStack({user}) {
           <Routes>
               <Route path="/" element={<Home complaints={complaintsList} users={usersList} />} />
               <Route path="/complaints">
-                <Route path='' element={<Complaint data={complaintsList}  />} />
+                <Route path='' element={<Complaint data={complaintsList} />} />
                 <Route path='create' element={<Create />} />
               </Route>
               <Route path="/users">

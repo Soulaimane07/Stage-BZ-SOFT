@@ -4,6 +4,7 @@ import ComplaintItem from '../../../Components/ComplaintItem'
 import {  LogOutModal } from '../../../Components/Modals'
 import { Lang } from '../../../Components/Functions'
 import ComplaintModal from '../../../Components/Modals/ComplaintModal'
+import { Link } from 'react-router-dom'
 
 function Complaint({data}) {
   const [complaintBody, setComplaintBody] = useState(null)
@@ -19,9 +20,16 @@ function Complaint({data}) {
 
   return (
     <div className={`${lang.title === "ar" && 'text-right'} max-w-screen-xl mx-auto mb-0 p-4 pb-0`}>
+        <div className='flex justify-between items-center mt-4'>
         <h1 className="text-2xl mt-4 lg:mt-0 font-extrabold text-slate-900 md:text-3xl lg:text-4xl"> 
           {lang.complaints.complaints} ( {data?.length} )
         </h1>
+        {data?.length > 0 && 
+          <Link to={'create'} className="focus:outline-none text-center text-white bg-orange-400 hover:bg-orange-600 focus:ring-4 focus:ring-orange-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:focus:ring-orange-500 w-40">
+              {lang?.Ccreate?.Ptitle}
+          </Link>
+        }
+        </div>
 
         <div className='my-10'>
             {data?.length > 0 

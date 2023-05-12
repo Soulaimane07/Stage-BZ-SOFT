@@ -13,3 +13,4 @@ export const PlansHeader = (text, step, setStep) => {
     </div>
   )
 }
+
