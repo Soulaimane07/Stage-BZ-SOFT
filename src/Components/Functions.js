@@ -4,12 +4,28 @@ import Languages from "../Components/Language.json"
 import axios from "axios"
 
 export const ServerUrl = 'http://127.0.0.1:8000/api'
+export const ServerUrlPublic = 'http://127.0.0.1:8000'
 
 export const CreateUser = (user) => {
     // const navigate = useNavigate()
 
     alert(user)
     // navigate('/users')
+}
+
+export const CreateComplaint = (link, complaint, fun, setLoading) => {
+    setLoading(true)
+    
+    axios.post(`${ServerUrl}${link}`, complaint, {headers: {"Content-Type": "multipart/form-data"}})
+      .then(res=> {
+        console.log(res.data);
+        fun()
+        setLoading(false)
+      })
+      .catch(err=> {
+        console.log(err);
+        setLoading(false)
+      })
 }
 
 export const Login = (user) => {
@@ -52,7 +68,6 @@ export const GetData = (link) => {
         })
     }, [])
 
-    console.log(link," ==>",data);
     return {data}
 }
 
@@ -72,6 +87,22 @@ export const GetUsers = (data) => {
 
 export const deleteUser = (id, fun) => {
     axios.delete(`${ServerUrl}/users/${id}`)
+        .then(res => {
+            console.log(res);
+            fun()
+        })
+}
+
+export const UpdateUser = (id, data) => {
+    axios.put(`${ServerUrl}/users/${id}`, data)
+        .then(res => {
+            console.log(res.data);
+            window.location.reload()
+        })
+}
+
+export const deleteComplaint = (id, fun) => {
+    axios.delete(`${ServerUrl}/complaints/${id}`)
         .then(res => {
             console.log(res);
             fun()

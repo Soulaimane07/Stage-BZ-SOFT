@@ -44,7 +44,7 @@
             }
         },
         "Ccreate":{
-            "image":"Click to upload image",
+            "image":"Image",
             "Ptitle":"Create Complaint",
             "title":"Title",
             "priority":"Priority",
@@ -91,7 +91,8 @@
             "no":"No, cancel",
             "complaint":"Are you sure you want to Delete this complaint?",
             "signout":"Are you sure you want to Sign out?",
-            "delete":"Are you sure you want to Delete your account?"
+            "delete":"Are you sure you want to Delete your account?",
+            "user":"Are you sure you want to delete the user?"
         },
         "months":{
             "january":"January",
@@ -123,6 +124,25 @@
             "Cclient":"Create client account",
             "Cagent":"Create agent account",
             "Ccompany":"Create company account"
+        },
+        "table":{
+            "email":"Email Address",
+            "fname":"First Name",
+            "lname":"Last Name",
+            "phone":"Phone",
+            "type":"Account Type"
+        },
+        "update":{
+            "title":"Update User",
+            "cname":"Company Name",
+            "email":"Email Address",
+            "fname":"First Name",
+            "lname":"Last Name",
+            "phone":"Phone",
+            "type":"Account Type",
+            "pass":"Password",
+            "lang":"Language",
+            "update":"Update"
         }
     },
     "Frensh":{
@@ -170,13 +190,14 @@
             }
         },
         "Ccreate":{
-            "image":"Cliquez pour télécharger l'image",
+            "image":"Image",
             "Ptitle":"Créer une réclamation",
             "title":"Titre",
             "priority":"Priorité",
             "desc":"Description",
             "message":"Ecrivez votre message ici...",
-            "create":"Créer"
+            "create":"Créer",
+            "createUser": "Créer un utilisateur"
         },
         "users":{
             "users":"Utilisateurs",
@@ -215,7 +236,8 @@
             "no":"Non, annuler",
             "complaint":"Voulez-vous vraiment supprimer cette réclamation ?",
             "signout":"Êtes-vous certain de vouloir vous déconnecter?",
-            "delete":"Êtes-vous sûr de vouloir supprimer votre compte ?"
+            "delete":"Êtes-vous sûr de vouloir supprimer votre compte ?",
+            "user":"Voulez-vous vraiment supprimer l'utilisateur ?"
         },
         "months":{
             "january":"Janvier",
@@ -247,6 +269,25 @@
             "Cclient":"Créer un compte client",
             "Cagent":"Créer un compte d'agent",
             "Ccompany":"Créer un compte d'entreprise"
+        },
+        "table":{
+            "email":"Adresse e-mail",
+            "fname":"Prénom",
+            "lname":"Nom de famille",
+            "phone":"Téléphone",
+            "type":"Type de compte"
+        },
+        "update":{
+            "title":"Mettre à jour l'utilisateur",
+            "cname":"Nom de l'entreprise",
+            "email":"Adresse e-mail",
+            "fname":"Prénom",
+            "lname":"Nom de famille",
+            "phone":"Téléphone",
+            "type":"Type de compte",
+            "pass":"Mot de passe",
+            "lang":"Langue",
+            "update":"Mise à jour"
         }
     },
     "Arabic":{
@@ -294,13 +335,14 @@
             }
         },
         "Ccreate":{
-            "image":"انقر لتحميل الصورة",
+            "image":" الصورة",
             "Ptitle":"إنشاء شكوى",
             "title":"العنوان",
             "priority":"أولوية",
             "desc":"الوصف",
             "message":"اكتب رسالتك هنا...",
-            "create":"إنشاء"
+            "create":"إنشاء",
+            "createUser": "إنشاء مستخدم"
         },
         "users":{
             "users":"المستخدمون",
@@ -339,7 +381,8 @@
             "no":"لا ، إلغاء",
             "complaint":"هل أنت متأكد أنك تريد حذف هذه الشكوى؟",
             "signout":"هل أنت متأكد أنك تريد الخروج؟",
-            "delete":"هل انت متأكد انك تريد حذف حسابك؟"
+            "delete":"هل انت متأكد انك تريد حذف حسابك؟",
+            "user":"هل أنت متأكد أنك تريد حذف المستخدم؟"
         },
         "months":{
             "january":"يناير",
@@ -371,6 +414,25 @@
             "Cclient":"إنشاء حساب العميل",
             "Cagent":"إنشاء حساب وكيل",
             "Ccompany":"إنشاء حساب الشركة"
+        },
+        "table":{
+            "email":"عنوان البريد الإلكتروني",
+            "fname":"الاسم الأول",
+            "lname":"اسم العائلة",
+            "phone":"الهاتف",
+            "type":"نوع الحساب"
+        },
+        "update":{
+            "title":"تحديث المستخدم",
+            "cname":"اسم الشركة",
+            "email":"عنوان البريد الإلكتروني",
+            "fname":"الاسم الأول",
+            "lname":"اسم العائلة",
+            "phone":"الهاتف",
+            "type":"نوع الحساب",
+            "pass":"كلمة المرور",
+            "lang":"اللغة",
+            "update":"تحديث"
         }
     }
 }

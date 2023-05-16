@@ -12,7 +12,7 @@ function Login() {
     const [email, setEmail] = useState("")
     const [pass, setPass] = useState("")
 
-    const cond = email === "" || pass?.length < 6
+    const cond = email === "" || pass?.length <= 7
 
 
     const [message, setMessage] = useState(null)

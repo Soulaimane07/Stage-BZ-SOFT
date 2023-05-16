@@ -6,6 +6,7 @@ import {BiClipboard} from 'react-icons/bi'
 import { LineChart, PieChart } from '../../../Components/Charts';
 import Box from '../../../Components/Box';
 import { GetUsers, Lang } from '../../../Components/Functions';
+import { ChartData } from '../../../Components/GetChartData';
 
 function Home({complaints, users}) {
   const articles = [
@@ -23,18 +24,22 @@ function Home({complaints, users}) {
     },
   ]
 
+  const Answers = []
+
+  console.log(ChartData(complaints, 1).month6);
+
   const data = {
     labels: [Lang()?.months.january, Lang()?.months.february, Lang()?.months.march, Lang()?.months.april, Lang()?.months.may, Lang()?.months.june, Lang()?.months.july, Lang()?.months.august, Lang()?.months.september, Lang()?.months.october, Lang()?.months.november, Lang()?.months.december],
     datasets: [
       {
         label: Lang()?.home.createdC,
-        data: [0, 10, 50, 80, 100, 100, 250, 220, 200, 200, 200, 210],
+        data: [ChartData(complaints, 1).month1, ChartData(complaints, 2).month2, ChartData(complaints, 3).month3, ChartData(complaints, 4).month4, ChartData(complaints, 5).month5, ChartData(complaints, 6).month6, ChartData(complaints, 7).month7, ChartData(complaints, 8).month8, ChartData(complaints, 9).month9, ChartData(complaints, 10).month10, ChartData(complaints, 11).month11, ChartData(complaints, 12).month12],
         borderColor: '#0bf186b1',
         backgroundColor: '#0bf186b1',
       },
       {
         label: Lang()?.home.answeredC,
-        data: [0, 10, 40, 50, 90, 100, 220, 200, 180, 170, 200, 200],
+        data: [ChartData(Answers, 1).month1, ChartData(Answers, 2).month2, ChartData(Answers, 3).month3, ChartData(Answers, 4).month4, ChartData(Answers, 5).month5, ChartData(Answers, 6).month6, ChartData(Answers, 7).month7, ChartData(Answers, 8).month8, ChartData(Answers, 9).month9, ChartData(Answers, 10).month10, ChartData(Answers, 11).month11, ChartData(Answers, 12).month12],
         borderColor: '#F45050',
         backgroundColor: '#F45050',
       },

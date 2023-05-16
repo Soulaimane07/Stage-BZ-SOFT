@@ -6,7 +6,7 @@ import './Signup.css'
 function Register({step, setStep, plan}) {
 
   return (
-    <div className='pb-40'>
+    <div className='pb-0'>
         {plan === "client" && <Client step={step} setStep={setStep} />}
         {plan === "agent" && <Agent step={step} setStep={setStep} />}
         {plan === "company" && <Companie step={step} setStep={setStep} />}

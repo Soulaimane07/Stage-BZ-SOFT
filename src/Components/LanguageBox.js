@@ -19,7 +19,7 @@ function LanguageBox() {
     ]
 
   return (
-    <div style={{display: "flex", marginTop: 40, justifyContent: "space-evenly"}}>
+    <div style={{display: "flex", marginTop: 40, marginBottom: 40, justifyContent: "space-evenly"}}>
         {langs.map((item,key)=>(
             <button key={key} onClick={()=> ChangeLang(item.sub)}>
                 {item.title}

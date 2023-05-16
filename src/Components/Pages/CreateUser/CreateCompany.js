@@ -9,7 +9,7 @@ function CreateCompany({fun, message, loading}) {
     const [phone, setPhone] = useState("")
     const [pass, setPass] = useState("")
 
-    const cond = cName === "" || email === "" || phone === "" || pass?.length < 6
+    const cond = cName === "" || email === "" || phone === "" || pass?.length <= 7
 
     const company = {
         cname: cName,

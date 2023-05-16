@@ -34,7 +34,7 @@ export const LogOutModal = ({title, yes, no, setLogout, fun}) => {
     )
 }
 
-export const UpdateUserModal = ({setUpdate, user, language}) => {
+export const UpdateUserModal = ({setUpdate, user, Update, language, langField, translation}) => {
     const [email, setEmail] = useState(user?.email)
     const [fName, setFname] = useState(user?.fname)
     const [lName, setLname] = useState(user?.lname)
@@ -59,13 +59,10 @@ export const UpdateUserModal = ({setUpdate, user, language}) => {
     }
 
     console.log(data);
-    console.log(language);
 
-    const Update = () => {
-        localStorage.setItem('Rec-user', JSON.stringify(data))
-        localStorage.setItem('Rec-lang', JSON.stringify(lang))
-        window.location.reload()
-    }
+    let Updatefun = () => {
+        Update(data, lang)
+    } 
 
     return(
         <div id="popup-modal" tabIndex="-1" className="fixed flex z-50 mx-auto overflow-x-hidden overflow-y-auto inset-0 h-[calc(100%-1rem)] max-h-full">
@@ -77,54 +74,56 @@ export const UpdateUserModal = ({setUpdate, user, language}) => {
                     </button>
 
                     <div className="px-6 py-6 lg:px-8">
-                        <h3 className="mb-4 text-xl font-medium text-gray-900 dark:text-white"> Update your profile </h3>
+                        <h3 className="mb-4 text-xl font-medium text-gray-900 dark:text-white"> {translation?.title} </h3>
                         <div className="space-y-6">
                             {user?.cname &&
                             <div>
-                                <label htmlFor="company name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your Company Name</label>
+                                <label htmlFor="company name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> {translation?.cname} </label>
                                 <input onChange={(e)=> setCname(e.target.value)} defaultValue={user?.cname} type="text" name="company name" id="company name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required />
                             </div>
                             }
                             {user?.email &&
                             <div>
-                                <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
+                                <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> {translation?.email} </label>
                                 <input onChange={(e)=> setEmail(e.target.value)} defaultValue={user?.email} type="email" name="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required />
                             </div>
                             }
                             {user?.fname &&
                             <div>
-                                <label htmlFor="first name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your First name</label>
+                                <label htmlFor="first name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> {translation?.fname} </label>
                                 <input onChange={(e)=> setFname(e.target.value)} defaultValue={user?.fname} type="tetx" name="first name" id="first name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required />
                             </div>
                             }
                             {user?.lname &&
                             <div>
-                                <label htmlFor="last name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your Last name</label>
+                                <label htmlFor="last name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> {translation?.lname} </label>
                                 <input onChange={(e)=> setLname(e.target.value)} defaultValue={user?.lname} type="text" name="last name" id="last name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required />
                             </div>
                             }
                             {user?.phone && 
                             <div>
-                                <label htmlFor="phone" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your phone number</label>
+                                <label htmlFor="phone" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> {translation?.phone} </label>
                                 <input onChange={(e)=> setPhone(e.target.value)} defaultValue={user?.phone} type="tel" name="phone" id="phone" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required />
                             </div>
                             
                             }
                             <div>
-                                <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your password</label>
+                                <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> {translation?.pass} </label>
                                 <input onChange={(e)=> setPass(e.target.value)} defaultValue={user?.pass} type="password" name="password" id="password" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required />
                             </div>
+                            {langField &&
                             <div>
-                                <label htmlFor="language" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> Language </label>
+                                <label htmlFor="language" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> {translation?.lang} </label>
                                 <select onChange={(e)=> setLang(e.target.value)} id="countries" class="bg-gray-50 border outline-none border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-orange-500 dark:focus:border-orange-500">
-                                    <option selected>Choose a country</option>
+                                    <option selected> </option>
                                     <option value="en"> English </option>
                                     <option value="fr">Français</option>
                                     <option value="ar">اللغة العربية</option>
                                 </select>
                             </div>
+                            }
                             
-                            <GeneralBtn text="Update" condition={cond} fun={Update} modal={true} />
+                            <GeneralBtn text={translation?.update} condition={cond} fun={Updatefun} modal={true} />
                         </div>
                     </div>
                 </div>

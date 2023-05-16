@@ -10,7 +10,7 @@ const [email, setEmail] = useState("")
   const [phone, setPhone] = useState("")
   const [pass, setPass] = useState("")
 
-  const cond = email === "" || fName === "" || lName === "" || phone === "" || pass?.length < 6
+  const cond = email === "" || fName === "" || lName === "" || phone === "" || pass?.length <= 7
 
   const agent = {
       email: email,

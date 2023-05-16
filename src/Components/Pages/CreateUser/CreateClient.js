@@ -9,7 +9,7 @@ function CreateClient({fun, message, loading}) {
     const [lName, setLname] = useState("")
     const [pass, setPass] = useState("")
 
-    const cond = email === "" || fName === "" || lName === "" || pass?.length < 6
+    const cond = email === "" || fName === "" || lName === "" || pass?.length <= 7
     const client = {
         email: email,
         fname: fName,

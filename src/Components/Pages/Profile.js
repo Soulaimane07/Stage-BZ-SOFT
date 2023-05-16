@@ -26,7 +26,15 @@ function Profile({user}) {
         deleteUser(user.id, AfterDelete)
     }
 
-  const lang = Lang()
+    const lang = Lang()
+
+    console.log(user);
+
+    const Update = (data, lang) => {
+        localStorage.setItem('Rec-user', JSON.stringify(data))
+        localStorage.setItem('Rec-lang', JSON.stringify(lang))
+        window.location.reload()
+    }
 
   return (
     <div className={`${lang.title === "ar" && 'text-right'} max-w-screen-xl mx-auto p-4`}>
@@ -90,7 +98,7 @@ function Profile({user}) {
             </div>
         </div>
 
-        {update && <UpdateUserModal user={user} setUpdate={setUpdate} language={lang?.title} />}
+        {update && <UpdateUserModal user={user} setUpdate={setUpdate} Update={Update} language={lang?.title} langField={true} translation={lang?.update} />}
         {deleteM && <LogOutModal title={lang?.alert?.delete} yes={lang?.alert?.yes} no={lang?.alert?.no} setLogout={setDeleteM} fun={DeleteAccount} />}
     </div>
   )
