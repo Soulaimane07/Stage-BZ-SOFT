@@ -1,8 +1,38 @@
-import React from 'react'
-import { Lang } from '../Functions'
+import React, { useState } from 'react'
+import { Lang, ServerUrl } from '../Functions'
 import { GeneralBtn } from '../Buttons'
+import axios from 'axios'
 
-function Comment({Commente, CancelCommante}) {
+function Comment({complaint, user, CancelCommante}) {
+  const [text, setText] = useState('')
+  const condition = text === ''
+
+  const date = new Date()
+
+  const comment = {
+    "writer": user?.email,
+    "complaint": complaint,
+    "date": {
+      "day": date.getDate(),
+      "month": date.getMonth()+1,
+      "year": date.getFullYear()
+    },
+    "text": text
+  }
+
+  const Commente = () => {
+    axios.post(`${ServerUrl}/comments`, comment, {headers: {"Content-Type": "multipart/form-data"}})
+      .then(res => {
+        console.log(res.data);
+        window.location.reload()
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }
+
+  console.log(comment);
+
   return (
     <div className='pt-0'>
         <hr className=" mb-4 border-gray-300 sm:mx-auto dark:border-gray-600 lg:my-8 lg:mb-4" />
@@ -12,12 +42,13 @@ function Comment({Commente, CancelCommante}) {
             <textarea 
                 id="message" 
                 rows="4" 
-                class=" outline-none block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-orange-500 focus:border-orange-500  dark:placeholder-gray-400 dark:text-white dark:focus:ring-orange-500 dark:focus:border-orange-500" 
+                onChange={e=> setText(e.target.value)}
+                class=" outline-none block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-orange-500 focus:border-orange-500  dark:placeholder-gray-400 dark:focus:ring-orange-500 dark:focus:border-orange-500" 
                 placeholder={Lang()?.complaints?.message}
             ></textarea>
 
             <div className="mt-4 flex justify-between space-x-4">
-                <GeneralBtn text={Lang()?.buttons?.post} fun={Commente} condition={false} />
+                <GeneralBtn text={Lang()?.buttons?.post} fun={Commente} condition={condition} />
                 <GeneralBtn text={Lang()?.buttons?.cancel} fun={CancelCommante} condition={false} role="delete" />
             </div>
         </div>

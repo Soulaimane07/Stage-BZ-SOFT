@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import { GetData, Lang, ServerUrlPublic, deleteComplaint } from '../../../Components/Functions'
-import {BiUser} from 'react-icons/bi'
 import Comment from '../../../Components/Modals/Comment'
 import { GeneralBtn } from '../../../Components/Buttons'
 import { LogOutModal } from '../../../Components/Modals'
 import { useNavigate } from 'react-router-dom'
 import { useParams } from "react-router-dom";
+import CommentDetail from './CommentDetail'
 
-function Details() {
+function Details({user}) {
     const params = useParams();
     const complaint = GetData(`/complaints/${params.id}`)
 
@@ -38,12 +38,12 @@ function Details() {
         setCommenter(false)
     }
     
-    const Commente = () => {
-        alert("Commente succed !!!")
-        setCommenter(false)
-    }
+    
 
     const lang = Lang()
+
+    const comments = GetData(`/getComments/${params.id}`)
+    console.log(comments);
 
   return (
         <div className={`${lang.title === "ar" && 'text-right'} mx-auto my-auto w-full mb-40 max-w-lg`}>
@@ -63,22 +63,13 @@ function Details() {
                         <div className='mb-10'>
                             <hr className="mb-4 border-gray-200 sm:mx-auto dark:border-gray-500 lg:my-0 lg:mb-4" />
                             <div className='mx-6'>
-                                <h1 className='mb-4 text-xl font-bold tracking-tight text-gray-900' > {lang?.complaints?.comments} ( {complaint?.data?.comments?.length} ) </h1>
-                                {complaint?.data?.comments?.map((item,key)=>(
-                                    <div className='mt-2 mb-6 bg-gray-100 px-4 py-4 rounded-lg' key={key}>
-                                        <div className=' flex items-center mb-2'>
-                                            <div className="text-gray-800 flex items-center">
-                                                <BiUser size={20} />
-                                                <h1 className='ml-1'> {item.writer} </h1>
-                                            </div>
-                                            <h4 className='ml-2 text-gray-400'> / {item.date} </h4>
-                                        </div>
-                                        <p className='text-gray-800'> {item.text} </p>
-                                    </div>
+                                <h1 className='mb-4 text-xl font-bold tracking-tight text-gray-900' > {lang?.complaints?.comments} ( {comments?.data?.length} ) </h1>
+                                {comments?.data?.map((item,key)=>(
+                                    <CommentDetail item={item} />
                                 ))}
                             </div>
                             {commenter &&
-                                <Comment Commente={Commente} CancelCommante={CancelCommante} />
+                                <Comment complaint={params.id} user={user} CancelCommante={CancelCommante} />
                             }
                         </div>
                     </div>

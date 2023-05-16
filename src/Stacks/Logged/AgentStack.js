@@ -14,6 +14,7 @@ import Details from '../../Pages/Client/Complaint/Details'
 function AgentStack({user}) {
   const usersList = GetData('/users').data 
   const complaintsList = GetData('/complaints').data 
+  const answersList = GetData('/comments').data 
 
   const footerPages = [
     {
@@ -34,11 +35,11 @@ function AgentStack({user}) {
     <>
       <div style={{marginTop: 140, minHeight: "90vh"}}>
           <Routes>
-              <Route path="/" element={<Home complaints={complaintsList} users={usersList} />} />
+              <Route path="/" element={<Home complaints={complaintsList} answersList={answersList} users={usersList} />} />
               <Route path="/complaints">
                 <Route path='' element={<Complaint data={complaintsList} />} />
-                <Route path='create' element={<Create />} />
-                <Route path=':id' element={<Details />} />
+                <Route path='create' element={<Create user={user} />} />
+                <Route path=':id' element={<Details user={user} />} />
               </Route>
               <Route path="/users">
                 <Route path='' element={<Users data={usersList} user={user} />} />

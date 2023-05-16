@@ -7,7 +7,7 @@ function Home({data}) {
     const Complaints = {
         "icon":<BiClipboard />,
         "title": Lang()?.home.complaints,
-        "text":`${Lang()?.home.complaints}: ${data?.length} | ${Lang()?.home.answers}: ${0}`,
+        "text":`${Lang()?.home.complaints}: ${data?.length}`,
         "link":"/complaints"
       }
 

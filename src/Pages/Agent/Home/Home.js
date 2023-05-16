@@ -8,12 +8,12 @@ import Box from '../../../Components/Box';
 import { GetUsers, Lang } from '../../../Components/Functions';
 import { ChartData } from '../../../Components/GetChartData';
 
-function Home({complaints, users}) {
+function Home({complaints, answersList, users}) {
   const articles = [
     {
       "icon":<BiClipboard />,
       "title": Lang()?.home.complaints,
-      "text":`${Lang()?.home.complaints}: ${complaints?.length} | ${Lang()?.home.answers}: ${0}`,
+      "text":`${Lang()?.home.complaints}: ${complaints?.length} | ${Lang()?.home.answers}: ${answersList?.length}`,
       "link":"/complaints"
     },
     {
@@ -24,9 +24,6 @@ function Home({complaints, users}) {
     },
   ]
 
-  const Answers = []
-
-  console.log(ChartData(complaints, 1).month6);
 
   const data = {
     labels: [Lang()?.months.january, Lang()?.months.february, Lang()?.months.march, Lang()?.months.april, Lang()?.months.may, Lang()?.months.june, Lang()?.months.july, Lang()?.months.august, Lang()?.months.september, Lang()?.months.october, Lang()?.months.november, Lang()?.months.december],
@@ -39,7 +36,7 @@ function Home({complaints, users}) {
       },
       {
         label: Lang()?.home.answeredC,
-        data: [ChartData(Answers, 1).month1, ChartData(Answers, 2).month2, ChartData(Answers, 3).month3, ChartData(Answers, 4).month4, ChartData(Answers, 5).month5, ChartData(Answers, 6).month6, ChartData(Answers, 7).month7, ChartData(Answers, 8).month8, ChartData(Answers, 9).month9, ChartData(Answers, 10).month10, ChartData(Answers, 11).month11, ChartData(Answers, 12).month12],
+        data: [ChartData(answersList, 1).month1, ChartData(answersList, 2).month2, ChartData(answersList, 3).month3, ChartData(answersList, 4).month4, ChartData(answersList, 5).month5, ChartData(answersList, 6).month6, ChartData(answersList, 7).month7, ChartData(answersList, 8).month8, ChartData(answersList, 9).month9, ChartData(answersList, 10).month10, ChartData(answersList, 11).month11, ChartData(answersList, 12).month12],
         borderColor: '#F45050',
         backgroundColor: '#F45050',
       },

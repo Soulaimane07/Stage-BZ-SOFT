@@ -15,20 +15,19 @@ export const ChartData = (data) => {
     let month12 = 0
 
     data.map(complaint=>(
-        complaint?.date[0]?.year === JSON.stringify(year) && (
-            complaint?.date[0]?.month === "1" && (month1 = month1 + 1),
-            complaint?.date[0]?.month === "2" && (month2 = month2 + 1),
-            complaint?.date[0]?.month === "3" && (month3 = month3 + 1),
-            complaint?.date[0]?.month === "4" && (month4 = month4 + 1),
-            complaint?.date[0]?.month === "5" && (month5 = month5 + 1),
-            complaint?.date[0]?.month === "6" && (month6 = month6 + 1),
-            complaint?.date[0]?.month === "7" && (month7 = month7 + 1),
-            complaint?.date[0]?.month === "8" && (month8 = month8 + 1),
-            complaint?.date[0]?.month === "9" && (month9 = month9 + 1),
-            complaint?.date[0]?.month === "10" && (month10 = month10 + 1),
-            complaint?.date[0]?.month === "11" && (month11 = month11 + 1),
-            complaint?.date[0]?.month === "12" && (month12 = month12 + 1),
-            console.log(complaint?.date[0]?.year)
+        complaint?.date?.year === JSON.stringify(year) && (
+            complaint?.date?.month === "1" && (month1 = month1 + 1),
+            complaint?.date?.month === "2" && (month2 = month2 + 1),
+            complaint?.date?.month === "3" && (month3 = month3 + 1),
+            complaint?.date?.month === "4" && (month4 = month4 + 1),
+            complaint?.date?.month === "5" && (month5 = month5 + 1),
+            complaint?.date?.month === "6" && (month6 = month6 + 1),
+            complaint?.date?.month === "7" && (month7 = month7 + 1),
+            complaint?.date?.month === "8" && (month8 = month8 + 1),
+            complaint?.date?.month === "9" && (month9 = month9 + 1),
+            complaint?.date?.month === "10" && (month10 = month10 + 1),
+            complaint?.date?.month === "11" && (month11 = month11 + 1),
+            complaint?.date?.month === "12" && (month12 = month12 + 1)
         )
     ))
 

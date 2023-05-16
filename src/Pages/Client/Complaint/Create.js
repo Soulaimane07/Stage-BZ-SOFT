@@ -3,7 +3,7 @@ import { GeneralBtn } from '../../../Components/Buttons'
 import { useNavigate } from 'react-router-dom'
 import { CreateComplaint, Lang } from '../../../Components/Functions'
 
-function Create() {
+function Create({user}) {
     const [image, setImage] = useState("")
     const [title, setTitle] = useState("")
     const [periode, setPeriode] = useState("")
@@ -19,15 +19,13 @@ function Create() {
         "title": title,
         "property": periode,
         "desc": desc,
-        "date":[
-            {
-                "month": date.getMonth()+1,
-                "year": date.getFullYear(),
-            },
-        ]
+        "date":{
+            "month": date.getMonth()+1,
+            "year": date.getFullYear(),
+        },
+        "complainer": user?.email
+        
     }
-
-    console.log(complaint);
 
     const navigate = useNavigate()
     const Create = () => {

@@ -3,14 +3,14 @@ import { Route, Routes } from 'react-router-dom'
 import Home from '../../Pages/Client/Home/Home'
 import Nav from '../../Pages/Client/Navbar/Nav'
 import Complaint from '../../Pages/Client/Complaint/Complaint'
-import Create from '../../Pages/Client/Complaint/Create'
 import Profile from '../../Components/Pages/Profile'
 import Footer from '../../Components/Footer'
-import { Lang } from '../../Components/Functions'
+import { GetData, Lang } from '../../Components/Functions'
+import Create from '../../Pages/Client/Complaint/Create'
+import Details from '../../Pages/Client/Complaint/Details'
 
 function ClientStack({user}) {
-  const complaintsList = [
-  ]
+  const complaintsList = GetData(`/getComplaints/${user?.email}`).data 
 
   const footerPages = [
     {
@@ -30,7 +30,8 @@ function ClientStack({user}) {
           <Route path="/" element={<Home data={complaintsList} />} />
           <Route path="/complaints">
             <Route path="" element={<Complaint title="Your Complaints" data={complaintsList} />} />
-            <Route path="create" element={<Create />} />
+            <Route path="create" element={<Create user={user} />} />
+            <Route path=":id" element={<Details user={user} />} />
           </Route>
           <Route path="/profile" element={<Profile user={user} />} />
         </Routes>
