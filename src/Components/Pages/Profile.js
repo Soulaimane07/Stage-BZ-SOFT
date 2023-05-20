@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import { GeneralBtn } from '../Buttons'
 import { LogOutModal, UpdateUserModal } from '../Modals'
-import { Lang, deleteUser } from '../Functions'
+import { Lang, ServerUrl, deleteUser } from '../Functions'
 import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
 
 function Profile({user}) {
     const [update, setUpdate] = useState(false)
@@ -31,9 +32,16 @@ function Profile({user}) {
     console.log(user);
 
     const Update = (data, lang) => {
-        localStorage.setItem('Rec-user', JSON.stringify(data))
-        localStorage.setItem('Rec-lang', JSON.stringify(lang))
-        window.location.reload()
+        axios.put(`${ServerUrl}/users/${user?.id}`, data)
+            .then(res=> {
+                console.log(res.data)
+                localStorage.setItem('Rec-user', JSON.stringify(res.data))
+                localStorage.setItem('Rec-lang', JSON.stringify(lang))
+                window.location.reload()
+            })
+            .catch(err=> {
+                console.log(err);
+            })
     }
 
   return (

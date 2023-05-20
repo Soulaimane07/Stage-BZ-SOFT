@@ -3,7 +3,7 @@ import {BiUser} from 'react-icons/bi'
 
 function CommentDetail({item, key}) {
   return (
-    <div className='mt-2 mb-6 bg-gray-100 px-4 py-4 rounded-lg' key={key}>
+    <div key={key} className='mt-2 mb-6 bg-gray-100 px-4 py-4 rounded-lg'>
         <div className=' flex items-center mb-2'>
             <div className="text-gray-800 flex items-center">
                 <BiUser size={20} />

@@ -27,10 +27,6 @@ function Users(props) {
     const [openUpdate, setOpenUpdate] = useState(null)
 
     const Update = (data, lang) => {
-        // localStorage.setItem('Rec-user', JSON.stringify(data))
-        // localStorage.setItem('Rec-lang', JSON.stringify(lang))
-        // window.location.reload()
-        // alert(JSON.stringify(data))
         UpdateUser(openUpdate?.id, data)
     }
 

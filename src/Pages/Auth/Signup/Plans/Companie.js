@@ -18,7 +18,7 @@ function Companie({step, setStep}) {
     axios.post(`${ServerUrl}/users`, user)
       .then(res=> {
         console.log(res);
-        localStorage.setItem('Rec-user', JSON.stringify(user))
+        localStorage.setItem('Rec-user', JSON.stringify(res.data))
         setLoading(false)
         navigate('/')
         window.location.reload()

@@ -1,4 +1,3 @@
-import React, { useState } from 'react'
 import NoData from '../../../Components/NoData'
 import ComplaintItem from '../../../Components/ComplaintItem'
 import { Lang } from '../../../Components/Functions'

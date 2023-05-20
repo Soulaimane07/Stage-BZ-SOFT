@@ -43,7 +43,7 @@ function Details({user}) {
     const lang = Lang()
 
     const comments = GetData(`/getComments/${params.id}`)
-    console.log(comments);
+    console.log("comments", comments?.data);
 
   return (
         <div className={`${lang.title === "ar" && 'text-right'} mx-auto my-auto w-full mb-40 max-w-lg`}>
@@ -65,7 +65,7 @@ function Details({user}) {
                             <div className='mx-6'>
                                 <h1 className='mb-4 text-xl font-bold tracking-tight text-gray-900' > {lang?.complaints?.comments} ( {comments?.data?.length} ) </h1>
                                 {comments?.data?.map((item,key)=>(
-                                    <CommentDetail item={item} />
+                                    <CommentDetail item={item} key={key} />
                                 ))}
                             </div>
                             {commenter &&
@@ -77,7 +77,7 @@ function Details({user}) {
                     {!commenter &&
                         <div className="mt-6 flex justify-between space-x-4">
                             <GeneralBtn text={lang?.buttons?.comment} fun={OpenCommente} condition={false} />
-                            <GeneralBtn text={lang?.buttons?.delete} fun={deleteC} condition={false} role="delete" />
+                            {comments.data.length === 0 && <GeneralBtn text={lang?.buttons?.delete} fun={deleteC} condition={false} role="delete" /> }
                         </div>
                     }
                 </div>
