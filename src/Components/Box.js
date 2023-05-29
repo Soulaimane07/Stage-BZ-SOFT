@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 function Box({data, key, read, type}) {
   return (
-    <article key={key} className="p-6 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-700 dark:border-gray-700">
+    <article key={key} className="p-6 pb-10 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-700 dark:border-gray-700">
         <h2 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
             <Link className={`${type === 'ar' && 'flex-row-reverse'} flex items-center`} to={data.link}>
                 {data.icon}

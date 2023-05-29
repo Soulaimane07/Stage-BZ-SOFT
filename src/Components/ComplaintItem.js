@@ -5,7 +5,7 @@ function ComplaintItem({type, Language, data, id}) {
   return (
     <div key={id} className="mb-10 mx-auto max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
         <Link to={`${data?.id}`}>
-            <img className="rounded-t-lg" src={`${ServerUrlPublic}/storage/images/complaints/${data?.image}`} alt="" />
+            <img className="rounded-t-lg" src={`${ServerUrlPublic}/storage/images/complaints/${data?.image[0]}`} alt="" />
         </Link>
         <div className="p-5">
             <Link to={`${data?.id}`}>

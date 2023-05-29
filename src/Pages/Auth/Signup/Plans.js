@@ -37,7 +37,7 @@ function Plans({setStep, plan, setPlan}) {
             <div style={{marginBottom: 10}}>
                 {plans.map((item,key)=>(
                     <button onClick={()=> setPlan(item.val)} key={key} className={`plan ${item.val === plan ? "bg-orange-500 text-white" : "bg-slate-200"}`}>
-                        <h1 className={lang?.title === "ar" && 'text-right'}> {item.title} </h1>
+                        <h1 className={lang?.title === "ar" ? 'text-right' : ''}> {item.title} </h1>
                     </button>
                 ))}
             </div>

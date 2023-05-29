@@ -10,6 +10,8 @@ import CreateUser from '../../Components/Pages/CreateUser'
 import Footer from '../../Components/Footer'
 import { GetData, Lang } from '../../Components/Functions'
 import Details from '../../Pages/Client/Complaint/Details'
+import Priorities from '../../Pages/Agent/Priorities/Priorities'
+import CreatePriority from '../../Pages/Agent/Priorities/CreatePriority'
 
 function AgentStack({user}) {
   const usersList = GetData('/users').data 
@@ -40,6 +42,10 @@ function AgentStack({user}) {
                 <Route path='' element={<Complaint data={complaintsList} />} />
                 <Route path='create' element={<Create user={user} />} />
                 <Route path=':id' element={<Details user={user} />} />
+              </Route>
+              <Route path="/priorities">
+                <Route path='' element={<Priorities />} />
+                <Route path='create' element={<CreatePriority />} />
               </Route>
               <Route path="/users">
                 <Route path='' element={<Users data={usersList} user={user} />} />

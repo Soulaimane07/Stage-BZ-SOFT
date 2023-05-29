@@ -71,7 +71,9 @@ function Home({complaints, answersList, users}) {
       <div className="mt-6 px-4 mx-auto max-w-screen-xl lg:mt-10 lg:px-0">
         <div className="grid gap-8 lg:grid-cols-2">
           {articles.map((item,key)=>(
-            <Box data={item} key={key} read={Lang()?.home.read} type={Lang()?.title} />
+            <div key={key}>
+              <Box data={item} read={Lang()?.home.read} type={Lang()?.title} />
+            </div>
           ))}
         </div>  
       </div>

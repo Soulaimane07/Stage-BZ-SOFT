@@ -18,13 +18,17 @@ function Navbar({user}) {
             "link":"/complaints"
         },
         {
+            "title": Lang()?.navbar.priorities,
+            "link":"/priorities"
+        },
+        {
             "title": Lang()?.navbar.users,
             "link":"/users"
         },
         {
             "title": Lang()?.navbar.profile,
             "link":"/profile"
-        },
+        }
     ]
 
     const lang = Lang()
@@ -64,15 +68,14 @@ function Navbar({user}) {
                 <div className="flex items-center">
                     <ul className={`${lang.title === "ar" ? ("flex-row-reverse") : 'space-x-4'} w-full flex  font-medium  text-sm`}>
                         {pages.map((item,key)=>(
-                            <div>
-                            <NavLink 
-                                key={key}
-                                to={item.link} 
-                                activateclassname="active"
-                                className={(navData) => navData.isActive ? `text-orange-400 ${lang.title === 'ar' && key === 0 ? 'mr-0' : 'mr-8'}` : `${lang.title === 'ar' && key === 0 ? 'mr-0' : 'mr-8'} text-white hover:text-orange-400`}
-                            >
-                                {item.title}
-                            </NavLink>
+                            <div key={key}>
+                                <NavLink 
+                                    to={item.link} 
+                                    activateclassname="active"
+                                    className={(navData) => navData.isActive ? `text-orange-400 ${lang.title === 'ar' && key === 0 ? 'mr-0' : 'mr-8'}` : `${lang.title === 'ar' && key === 0 ? 'mr-0' : 'mr-8'} text-white hover:text-orange-400`}
+                                >
+                                    {item.title}
+                                </NavLink>
                             </div>
                         ))}
 

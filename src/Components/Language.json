@@ -7,6 +7,7 @@
             "complaints":"Complaints",
             "users":"Users",
             "profile":"Profile",
+            "priorities":"Priorities",
             "signout":"Sign out"
         },
         "home":{
@@ -66,6 +67,18 @@
             "agent":"Agent",
             "company": "Company"
         },
+        "priorities":{
+            "title":"Priorities",
+            "nodata":{
+                "nodata":"No priorities available",
+                "create":"Create priority"
+            }
+        },
+        "CPriority":{
+            "title":"Create priority",
+            "title1":"Title",
+            "color":"Color"
+        },
         "profile":{
             "title":"Your Profile",
             "cname":"Company Name",
@@ -92,7 +105,8 @@
             "complaint":"Are you sure you want to Delete this complaint?",
             "signout":"Are you sure you want to Sign out?",
             "delete":"Are you sure you want to Delete your account?",
-            "user":"Are you sure you want to delete the user?"
+            "user":"Are you sure you want to delete the user?",
+            "priority":"Are you sure you want to delete the priority?"
         },
         "months":{
             "january":"January",
@@ -130,7 +144,10 @@
             "fname":"First Name",
             "lname":"Last Name",
             "phone":"Phone",
-            "type":"Account Type"
+            "type":"Account Type",
+            "title":"Title",
+            "color":"Color",
+            "demo":"Demo"
         },
         "update":{
             "title":"Update User",
@@ -142,7 +159,13 @@
             "type":"Account Type",
             "pass":"Password",
             "lang":"Language",
-            "update":"Update"
+            "update":"Update",
+            "title1":"Title",
+            "color":"Color",
+            "updateP":"Update Priority",
+            "client":"Client",
+            "agent":"Agent",
+            "company": "Company"
         }
     },
     "Frensh":{
@@ -153,6 +176,7 @@
             "complaints":"Plaintes",
             "users":"Utilisateurs",
             "profile":"Profil",
+            "priorities":"Priorités",
             "signout":"Se déconnecter"
         },
         "home":{
@@ -225,6 +249,18 @@
             "update":"Mise à jour",
             "delete":"Supprimer"
         },
+        "priorities":{
+            "title":"Priorités",
+            "nodata":{
+                "nodata":"Aucune priorité disponible",
+                "create":"Créer une priorité"
+            }
+        },
+        "CPriority":{
+            "title":"Créer une priorité",
+            "title1":"Titre",
+            "color":"Couleur"
+        },
         "buttons":{
             "comment":"Commenter",
             "delete":"Supprimer",
@@ -237,7 +273,8 @@
             "complaint":"Voulez-vous vraiment supprimer cette réclamation ?",
             "signout":"Êtes-vous certain de vouloir vous déconnecter?",
             "delete":"Êtes-vous sûr de vouloir supprimer votre compte ?",
-            "user":"Voulez-vous vraiment supprimer l'utilisateur ?"
+            "user":"Voulez-vous vraiment supprimer l'utilisateur ?",
+            "priority":"Voulez-vous vraiment supprimer la priorité ?"
         },
         "months":{
             "january":"Janvier",
@@ -275,7 +312,10 @@
             "fname":"Prénom",
             "lname":"Nom de famille",
             "phone":"Téléphone",
-            "type":"Type de compte"
+            "type":"Type de compte",
+            "title":"Titre",
+            "color":"Couleur",
+            "demo":"Démo"
         },
         "update":{
             "title":"Mettre à jour l'utilisateur",
@@ -287,7 +327,13 @@
             "type":"Type de compte",
             "pass":"Mot de passe",
             "lang":"Langue",
-            "update":"Mise à jour"
+            "update":"Mise à jour",
+            "title1":"Titre",
+            "color":"Couleur",
+            "updateP":"Mise à jour la priorité",
+            "client":"Client",
+            "agent":"Agent",
+            "company": "Entreprise"
         }
     },
     "Arabic":{
@@ -298,6 +344,7 @@
             "complaints":"الشكاوي",
             "users":"المستخدمون",
             "profile":"الحساب",
+            "priorities":"الأولويات",
             "signout":"تسجيل الخروج"
         },
         "home":{
@@ -370,6 +417,18 @@
             "update":"تحديث",
             "delete":"حذف"
         },
+        "priorities":{
+            "title":"الأولويات",
+            "nodata":{
+                "nodata":"لا توجد أولوية متاحة",
+                "create":"إنشاء أولوية"
+            }
+        },
+        "CPriority":{
+            "title":"إنشاء أولوية",
+            "title1":"العنوان",
+            "color":"اللون"
+        },
         "buttons":{
             "comment":"تعليق",
             "delete":"حذف",
@@ -382,7 +441,8 @@
             "complaint":"هل أنت متأكد أنك تريد حذف هذه الشكوى؟",
             "signout":"هل أنت متأكد أنك تريد الخروج؟",
             "delete":"هل انت متأكد انك تريد حذف حسابك؟",
-            "user":"هل أنت متأكد أنك تريد حذف المستخدم؟"
+            "user":"هل أنت متأكد أنك تريد حذف المستخدم؟",
+            "priority":"هل أنت متأكد أنك تريد حذف الأولوية؟"
         },
         "months":{
             "january":"يناير",
@@ -420,7 +480,10 @@
             "fname":"الاسم الأول",
             "lname":"اسم العائلة",
             "phone":"الهاتف",
-            "type":"نوع الحساب"
+            "type":"نوع الحساب",
+            "title":"العنوان",
+            "color":"اللون",
+            "demo":"العرض"
         },
         "update":{
             "title":"تحديث المستخدم",
@@ -432,7 +495,13 @@
             "type":"نوع الحساب",
             "pass":"كلمة المرور",
             "lang":"اللغة",
-            "update":"تحديث"
+            "update":"تحديث",
+            "title1":"العنوان",
+            "color":"اللون",
+            "updateP":"تحديث الاولوية",
+            "client":"عميل",
+            "agent":"عامل",
+            "company": "شركة"
         }
     }
 }

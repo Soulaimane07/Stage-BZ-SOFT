@@ -42,11 +42,12 @@ export const UpdateUserModal = ({setUpdate, user, Update, language, langField, t
     const [pass, setPass] = useState(user?.pass)
     const [cname, setCname] = useState(user?.cname)
     const [lang, setLang] = useState(language)
+    const [type, setType] = useState(user?.type)
 
     let cond
-    user?.type === "client" && (cond = (email === user?.email && fName === user?.fname && lName === user?.lname && pass === user?.pass && lang === language) || (email === "" || fName === "" || lName === "" || pass?.length < 6))
-    user?.type === "agent" && ( cond = (email === user?.email && fName === user?.fname && lName === user?.lname && phone === user?.phone && pass === user?.pass && lang === language) || (email === "" || fName === "" || lName === "" || phone === "" || pass?.length < 6))
-    user?.type === "company" && ( cond = (cname === user?.cname && email === user?.email && phone === user?.phone && pass === user?.pass && lang === language) || (cname === "" || email === "" || phone === "" || pass?.length < 6))
+    user?.type === "client" && (cond = (email === user?.email && type === user?.type && fName === user?.fname && lName === user?.lname && pass === user?.pass && lang === language) || (email === "" || type === "" || fName === "" || lName === "" || pass?.length < 6 || lang === ""))
+    user?.type === "agent" && ( cond = (email === user?.email && type === user?.type && fName === user?.fname && lName === user?.lname && phone === user?.phone && pass === user?.pass && lang === language) || (email === "" || type === "" || fName === "" || lName === "" || phone === "" || pass?.length < 6 || lang === ""))
+    user?.type === "company" && ( cond = (cname === user?.cname && email === user?.email && type === user?.type && phone === user?.phone && pass === user?.pass && lang === language) || (cname === "" || email === "" || type === "" || phone === "" || pass?.length < 6 || lang === ""))
   
     const data = {
         email: email,
@@ -55,7 +56,7 @@ export const UpdateUserModal = ({setUpdate, user, Update, language, langField, t
         phone: phone,
         pass: pass,
         cname: cname,
-        type: user?.type
+        type: type
     }
 
     console.log(data);
@@ -105,8 +106,16 @@ export const UpdateUserModal = ({setUpdate, user, Update, language, langField, t
                                 <label htmlFor="phone" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> {translation?.phone} </label>
                                 <input onChange={(e)=> setPhone(e.target.value)} defaultValue={user?.phone} type="tel" name="phone" id="phone" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required />
                             </div>
-                            
                             }
+                            <div>
+                                <label htmlFor="phone" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> {translation?.type} </label>
+                                <select onChange={(e)=> setType(e.target.value)} id="countries" className="bg-gray-50 border outline-none border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-orange-500 dark:focus:border-orange-500">
+                                    <option value=""> </option>
+                                    <option value="client"> {translation?.client} </option>
+                                    <option value="agent"> {translation?.agent} </option>
+                                    <option value="company"> {translation?.company} </option>
+                                </select>
+                            </div>
                             <div>
                                 <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> {translation?.pass} </label>
                                 <input onChange={(e)=> setPass(e.target.value)} defaultValue={user?.pass} type="password" name="password" id="password" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required />
@@ -114,8 +123,8 @@ export const UpdateUserModal = ({setUpdate, user, Update, language, langField, t
                             {langField &&
                             <div>
                                 <label htmlFor="language" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> {translation?.lang} </label>
-                                <select onChange={(e)=> setLang(e.target.value)} id="countries" class="bg-gray-50 border outline-none border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-orange-500 dark:focus:border-orange-500">
-                                    <option selected> </option>
+                                <select onChange={(e)=> setLang(e.target.value)} id="countries" className="bg-gray-50 border outline-none border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-orange-500 dark:focus:border-orange-500">
+                                    <option value=""> </option>
                                     <option value="en"> English </option>
                                     <option value="fr">Français</option>
                                     <option value="ar">اللغة العربية</option>
@@ -180,7 +189,7 @@ export const ComplaintModal = ({Language, data, setComplaintBody, setDeleteC}) =
                                     <div className="px-5 pt-5">
                                         <h5 className="mb-4 text-xl font-bold tracking-tight text-gray-900 dark:text-white"> {Language?.complaints?.commentaire} </h5>
 
-                                        <textarea id="message" rows="4" class=" outline-none block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-orange-500 focus:border-orange-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-orange-500 dark:focus:border-orange-500" placeholder={Language?.complaints?.message}></textarea>
+                                        <textarea id="message" rows="4" className=" outline-none block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-orange-500 focus:border-orange-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-orange-500 dark:focus:border-orange-500" placeholder={Language?.complaints?.message}></textarea>
 
                                         <div className="mt-4 flex justify-between space-x-4">
                                             <GeneralBtn text={Language?.buttons?.post} fun={Commente} condition={false} />
@@ -201,5 +210,50 @@ export const ComplaintModal = ({Language, data, setComplaintBody, setDeleteC}) =
                 </div>
             </div>
         </div>
+    )
+}
+
+export const PriorityModal = ({setUpdate, priority, Update, translation}) => {
+    const [title, setTitle] = useState(priority?.title)
+    const [color, setColor] = useState(priority?.color)
+
+    let cond = title === priority?.title && color === priority?.color
+
+    const data = {
+        title: title,
+        color: color,
+    }
+
+    let Updatefun = () => {
+        Update(priority.id, data)
+    } 
+
+    return (
+        <div id="popup-modal" tabIndex="-1" className="fixed flex z-50 mx-auto overflow-x-hidden overflow-y-auto inset-0 h-[calc(100%-1rem)] max-h-full">
+            <div className="relative mx-auto my-auto w-full max-w-md max-h-full">
+                <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                    <button type="button" onClick={()=> setUpdate(false)} className="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-hide="authentication-modal">
+                        <svg aria-hidden="true" className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
+                        <span className="sr-only">Close modal</span>
+                    </button>
+
+                    <div className="px-6 py-6 lg:px-8">
+                        <h3 className="mb-4 text-xl font-medium text-gray-900 dark:text-white"> {translation?.updateP} </h3>
+                        <div className="space-y-6">
+                            <div>
+                                <label htmlFor="company name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> {translation?.title1} </label>
+                                <input onChange={(e)=> setTitle(e.target.value)} defaultValue={priority?.title} type="text" name="company name" id="company name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required />
+                            </div>
+                            <div>
+                                <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> {translation?.color} </label>
+                                <input onChange={(e)=> setColor(e.target.value)} defaultValue={priority?.color} type="color" name="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required />
+                            </div>
+                            
+                            <GeneralBtn text={translation?.update} condition={cond} fun={Updatefun} modal={true} />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
     )
 }

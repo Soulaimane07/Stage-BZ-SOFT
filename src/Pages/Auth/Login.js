@@ -51,8 +51,8 @@ function Login() {
     
 
   return (
-    <div className={`${lang?.title === "ar" && "text-right"} Login grid mx-auto xl:gap-0 lg:grid-cols-12`}>
-        <div className='w-full md:px-40 px-10 mx-auto mr-auto lg:col-span-4 lg:px-10'>
+    <div className={`${lang?.title === "ar" && "text-right flex-row-reverse "} Login flex flex-row`}>
+        <div className='w-full md:w-2/3 md:mx-auto lg:w-1/2 px-8 py-8 '>
             <img className='logo' src='./images/logo.jpeg' alt='Logo' />
             
 
@@ -77,7 +77,9 @@ function Login() {
                 <LanguageBox />
             </div>
         </div>
-        <Image />
+        <div className='hidden lg:inline w-full'>
+            <Image />
+        </div>
     </div>
   )
 }

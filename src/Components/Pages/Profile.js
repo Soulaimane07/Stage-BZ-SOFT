@@ -29,8 +29,6 @@ function Profile({user}) {
 
     const lang = Lang()
 
-    console.log(user);
-
     const Update = (data, lang) => {
         axios.put(`${ServerUrl}/users/${user?.id}`, data)
             .then(res=> {
@@ -101,7 +99,7 @@ function Profile({user}) {
 
                 <div className="flex space-x-4">
                     <GeneralBtn text={lang?.profile.update} condition={false} fun={UpdateOpen} role={"update"} />
-                    <GeneralBtn text={lang?.profile.delete} condition={false} fun={DeleteOpen} role={"delete"} />
+                    {user?.type === "agent" && <GeneralBtn text={lang?.profile.delete} condition={false} fun={DeleteOpen} role={"delete"} />}
                 </div>
             </div>
         </div>

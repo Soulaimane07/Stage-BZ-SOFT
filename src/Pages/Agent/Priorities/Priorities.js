@@ -1,16 +1,16 @@
 import React, { useState } from 'react'
 import NoData from '../../../Components/NoData'
-import { Lang, UpdateUser, deleteUser } from '../../../Components/Functions'
+import { GetData, Lang, UpdatePriority, deletePriority } from '../../../Components/Functions'
 import { Link } from 'react-router-dom'
 
 import {RiDeleteBinLine} from 'react-icons/ri'
 import {HiOutlinePencilAlt} from 'react-icons/hi'
-import { LogOutModal, UpdateUserModal } from '../../../Components/Modals'
+import { LogOutModal, PriorityModal } from '../../../Components/Modals'
 
-function Users(props) {
-    const lang = Lang()
+function Priorities() {
+  const lang = Lang()
 
-    const data = props.data
+    const data = GetData('/priorities').data
 
     const [openDelete, setOpenDelete] = useState(null)
     
@@ -20,26 +20,25 @@ function Users(props) {
     }
 
     const deleteFun = () => {
-        deleteUser(openDelete, closeDelete)
+        deletePriority(openDelete, closeDelete)
     }
 
 
     const [openUpdate, setOpenUpdate] = useState(null)
 
-    const Update = (data, lang) => {
-        UpdateUser(openUpdate?.id, data)
+    const Update = (id, data) => {
+        UpdatePriority(id, data)
     }
 
-    
   return (
     <div className={`${lang.title === "ar" && "text-right"} max-w-screen-xl mx-auto p-4`}>
         <div className={`${lang.title === "ar" && 'flex-row-reverse'} flex justify-between items-center mt-4`}>
             <h1 className='text-2xl lg:mt-0 font-extrabold text-slate-900 md:text-3xl lg:text-4xl'>
-                {lang?.users.users} ( {data?.length} )
+                {lang?.priorities.title} ( {data?.length} )
             </h1>
             {data?.length > 0 && 
                 <Link to={'create'} className="focus:outline-none text-center text-white bg-orange-400 hover:bg-orange-600 focus:ring-4 focus:ring-orange-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:focus:ring-orange-500 w-40">
-                    {lang?.Ccreate?.createUser}
+                    {lang?.CPriority?.title}
                 </Link>
             }
         </div>
@@ -55,19 +54,13 @@ function Users(props) {
                                     id
                                   </th>
                                   <th scope="col" className="px-6 py-3">
-                                    {lang?.table?.email}
+                                    {lang?.table?.title}
                                   </th>
                                   <th scope="col" className="px-6 py-3">
-                                    {lang?.table?.fname}
+                                    {lang?.table?.color}
                                   </th>
                                   <th scope="col" className="px-6 py-3">
-                                    {lang?.table?.lname}
-                                  </th>
-                                  <th scope="col" className="px-6 py-3">
-                                    {lang?.table?.phone}
-                                  </th>
-                                  <th scope="col" className="px-6 py-3 text-center">
-                                    {lang?.table?.type}
+                                    {lang?.table?.demo}
                                   </th>
                                   <th scope="col" className="px-6 py-3">
                                   </th>
@@ -80,27 +73,15 @@ function Users(props) {
                                       {key+1}
                                   </td>
                                   <th scope="row" className="px-6 py-4 font-medium  whitespace-nowrap">
-                                      {item.email}
+                                      {item.title}
                                   </th>
                                   <td className="px-6 py-4">
-                                      {item.fname}
+                                      {item.color}
                                   </td>
                                   <td className="px-6 py-4">
-                                      {item.lname}
-                                  </td>
-                                  <td className="px-6 py-4">
-                                      {item.phone}
-                                  </td>
-                                  <td className="px-6 py-4 text-center">
-                                        {item.type === "agent" &&
-                                            <span className="bg-yellow-100 text-yellow-800 text-xs font-medium mr-2 px-4 py-1.5 rounded dark:bg-yellow-700 dark:text-yellow-200">{item.type}</span>
-                                        }
-                                        {item.type === "company" &&
-                                            <span className="bg-red-100 text-red-800 text-xs font-medium mr-2 px-4 py-1.5 rounded dark:bg-red-800 dark:text-red-200">{item.type}</span>
-                                        }
-                                        {item.type === "client" &&
-                                            <span className="bg-green-100 text-green-800 text-xs font-medium mr-2 px-4 py-1.5 rounded dark:bg-green-800 dark:text-green-200">{item.type}</span>
-                                        }
+                                    <div className=' rounded py-2 text-center' style={{backgroundColor: item.color}}>
+                                        <p className='opacity-100 text-black'> {item.title} </p>
+                                    </div>
                                   </td>
                                   <td className="px-0 py-4 flex justify-end">
                                     <button onClick={()=> setOpenUpdate(item)} type="button" className=" text-lg focus:outline-none text-center text-white bg-orange-400 hover:bg-orange-600 focus:ring-4 focus:ring-orange-300 font-medium rounded-lg py-2.5 dark:focus:ring-orange-500 px-4 mx-1">
@@ -117,17 +98,17 @@ function Users(props) {
                   </div>
 
                     {openDelete && 
-                        <LogOutModal title={lang?.alert?.user} yes={lang?.alert?.yes} no={lang?.alert?.no} setLogout={setOpenDelete} fun={deleteFun} />
+                        <LogOutModal title={lang?.alert?.priority} yes={lang?.alert?.yes} no={lang?.alert?.no} setLogout={setOpenDelete} fun={deleteFun} />
                     }
                     {openUpdate && 
-                        <UpdateUserModal user={openUpdate} setUpdate={setOpenUpdate} Update={Update} language={lang?.title} langField={false} translation={lang?.update} />
+                        <PriorityModal priority={openUpdate} setUpdate={setOpenUpdate} Update={Update} language={lang?.title} translation={lang?.update} />
                     }
                 </>
-                : <NoData Language={lang?.users.nodata} stat="users" create="User" />
+                : <NoData Language={lang?.priorities.nodata} />
             }
         </div>
     </div>
   )
 }
 
-export default Users
+export default Priorities

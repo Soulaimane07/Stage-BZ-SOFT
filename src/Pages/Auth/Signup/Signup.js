@@ -10,9 +10,11 @@ function Signup() {
     const [plan, setPlan] = useState(null)
 
   return (
-    <div className={`${Lang()?.title === "ar" && "text-right"} Login grid mx-auto xl:gap-0 lg:grid-cols-12`}>
-        <Image />
-        <div className='px-10 mx-auto mr-auto md:px-40 lg:col-span-4 lg:px-10 w-full'>
+    <div className={`${Lang()?.title === "ar" && "text-right"} Login flex flex-row`}>
+        <div className='w-full'>
+          <Image />
+        </div>
+        <div className='w-1/2 px-8 py-8'>
             <img className='logo' src='./images/logo.jpeg' alt='Logo' />
 
             {step === 0 && <Plans setStep={setStep} plan={plan} setPlan={setPlan} />}

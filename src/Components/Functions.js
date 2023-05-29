@@ -28,6 +28,21 @@ export const CreateComplaint = (link, complaint, fun, setLoading) => {
       })
 }
 
+export const CreatePriorityFun = (link, priority, fun, setLoading) => {
+    setLoading(true)
+    
+    axios.post(`${ServerUrl}${link}`, priority)
+      .then(res=> {
+        console.log(res.data);
+        fun()
+        setLoading(false)
+      })
+      .catch(err=> {
+        console.log(err);
+        setLoading(false)
+      })
+}
+
 export const Login = (user) => {
     const navigate = useNavigate()
     
@@ -96,6 +111,30 @@ export const deleteUser = (id, fun) => {
 export const UpdateUser = (id, data) => {
     axios.put(`${ServerUrl}/users/${id}`, data)
         .then(res => {
+            console.log(res.data);
+            window.location.reload()
+        })
+}
+
+export const deletePriority = (id, fun) => {
+    axios.delete(`${ServerUrl}/priorities/${id}`)
+        .then(res => {
+            console.log(res);
+            fun()
+        })
+}
+
+export const UpdatePriority = (id, data) => {
+    axios.put(`${ServerUrl}/priorities/${id}`, data)
+        .then(res => {
+            console.log(res.data);
+            window.location.reload()
+        })
+}
+
+export const Update = (id, data) => {
+    axios.put(`${ServerUrl}/priorities/${id}`, data)
+        .then(res=>{
             console.log(res.data);
             window.location.reload()
         })

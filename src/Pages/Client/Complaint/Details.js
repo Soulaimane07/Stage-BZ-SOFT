@@ -37,13 +37,10 @@ function Details({user}) {
     const CancelCommante = () => {
         setCommenter(false)
     }
-    
-    
 
     const lang = Lang()
 
     const comments = GetData(`/getComments/${params.id}`)
-    console.log("comments", comments?.data);
 
   return (
         <div className={`${lang.title === "ar" && 'text-right'} mx-auto my-auto w-full mb-40 max-w-lg`}>
@@ -52,8 +49,12 @@ function Details({user}) {
                     <h3 className="mb-6 text-xl font-medium text-gray-900 dark:text-white"> </h3>
 
                     <div className="space-y-0">
-                        <div>
-                            <img className="rounded-lg w-full" src={`${ServerUrlPublic}/storage/images/complaints/${complaint?.data?.image}`} alt="" />
+                        <div className='grid grid-cols-2 gap-2'>
+                            {complaint?.data?.image?.map((item,key)=>(
+                                <div key={key} className='rounded-lg w-full h-full overflow-hidden'>
+                                    <img className=" h-full w-full" src={`${ServerUrlPublic}/storage/images/complaints/${item}`} alt="" />
+                                </div>
+                            ))}
                         </div>
                         <div className="p-5">
                             <h5 className="mb-4 text-2xl font-bold tracking-tight text-gray-900"> {complaint?.data?.title} </h5>
@@ -65,7 +66,9 @@ function Details({user}) {
                             <div className='mx-6'>
                                 <h1 className='mb-4 text-xl font-bold tracking-tight text-gray-900' > {lang?.complaints?.comments} ( {comments?.data?.length} ) </h1>
                                 {comments?.data?.map((item,key)=>(
-                                    <CommentDetail item={item} key={key} />
+                                    <div key={key}>
+                                    <CommentDetail item={item} id={key} />
+                                    </div>
                                 ))}
                             </div>
                             {commenter &&
