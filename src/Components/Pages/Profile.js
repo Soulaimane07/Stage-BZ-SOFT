@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { GeneralBtn } from '../Buttons'
 import { LogOutModal, UpdateUserModal } from '../Modals'
-import { Lang, ServerUrl, deleteUser } from '../Functions'
+import { Destroy, Lang, ServerUrl } from '../Functions'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
@@ -23,14 +23,10 @@ function Profile({user}) {
         window.location.reload()
     }
 
-    const DeleteAccount = () => {
-        deleteUser(user.id, AfterDelete)
-    }
-
     const lang = Lang()
 
-    const Update = (data, lang) => {
-        axios.put(`${ServerUrl}/users/${user?.id}`, data)
+    const Update = (link, id, data, lang) => {
+        axios.put(`${ServerUrl}${link}/${id}`, data)
             .then(res=> {
                 console.log(res.data)
                 localStorage.setItem('Rec-user', JSON.stringify(res.data))
@@ -86,12 +82,6 @@ function Profile({user}) {
                         <h1 className="font-bold">{user?.type} </h1>
                     </div>
                 }
-                {/* {user?.pass &&
-                    <div className={`${lang.title === "ar" && "flex-row-reverse"} mb-6 flex justify-between`}>
-                        <label htmlFor="password" className="block mb-2 font-medium"> {lang?.profile.pass} </label>
-                        <h1 className="font-bold">{user?.pass} </h1>
-                    </div>
-                } */}
                 <div className={`${lang.title === "ar" && "flex-row-reverse"} mb-6 flex justify-between`}>
                     <label htmlFor="password" className="block mb-2 font-medium"> {lang?.profile.lang} </label>
                     <h1 className="font-bold"> {lang?.title1} </h1>
@@ -105,7 +95,7 @@ function Profile({user}) {
         </div>
 
         {update && <UpdateUserModal user={user} setUpdate={setUpdate} Update={Update} language={lang?.title} langField={true} translation={lang?.update} />}
-        {deleteM && <LogOutModal title={lang?.alert?.delete} yes={lang?.alert?.yes} no={lang?.alert?.no} setLogout={setDeleteM} fun={DeleteAccount} />}
+        {deleteM && <LogOutModal title={lang?.alert?.delete} yes={lang?.alert?.yes} no={lang?.alert?.no} setLogout={setDeleteM} fun={()=> Destroy('/users', user.id, AfterDelete)} />}
     </div>
   )
 }

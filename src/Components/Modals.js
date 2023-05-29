@@ -34,7 +34,7 @@ export const LogOutModal = ({title, yes, no, setLogout, fun}) => {
     )
 }
 
-export const UpdateUserModal = ({setUpdate, user, Update, language, langField, translation}) => {
+export const UpdateUserModal = ({setUpdate, user, Update, language, langField, canComent, translation}) => {
     const [email, setEmail] = useState(user?.email)
     const [fName, setFname] = useState(user?.fname)
     const [lName, setLname] = useState(user?.lname)
@@ -42,12 +42,12 @@ export const UpdateUserModal = ({setUpdate, user, Update, language, langField, t
     const [pass, setPass] = useState(user?.pass)
     const [cname, setCname] = useState(user?.cname)
     const [lang, setLang] = useState(language)
-    const [type, setType] = useState(user?.type)
+    const [comment, setComment] = useState(user?.cancoment)
 
     let cond
-    user?.type === "client" && (cond = (email === user?.email && type === user?.type && fName === user?.fname && lName === user?.lname && pass === user?.pass && lang === language) || (email === "" || type === "" || fName === "" || lName === "" || pass?.length < 6 || lang === ""))
-    user?.type === "agent" && ( cond = (email === user?.email && type === user?.type && fName === user?.fname && lName === user?.lname && phone === user?.phone && pass === user?.pass && lang === language) || (email === "" || type === "" || fName === "" || lName === "" || phone === "" || pass?.length < 6 || lang === ""))
-    user?.type === "company" && ( cond = (cname === user?.cname && email === user?.email && type === user?.type && phone === user?.phone && pass === user?.pass && lang === language) || (cname === "" || email === "" || type === "" || phone === "" || pass?.length < 6 || lang === ""))
+    user?.type === "client" && (cond = (email === user?.email && comment === user?.cancoment && fName === user?.fname && lName === user?.lname && pass === user?.pass && lang === language) || (email === "" || comment === "" || fName === "" || lName === "" || pass?.length < 6 || lang === ""))
+    user?.type === "agent" && ( cond = (email === user?.email && comment === user?.cancoment && fName === user?.fname && lName === user?.lname && phone === user?.phone && pass === user?.pass && lang === language) || (email === "" || comment === "" || fName === "" || lName === "" || phone === "" || pass?.length < 6 || lang === ""))
+    user?.type === "company" && ( cond = (cname === user?.cname && email === user?.email && comment === user?.cancoment && phone === user?.phone && pass === user?.pass && lang === language) || (cname === "" || email === "" || comment === "" || phone === "" || pass?.length < 6 || lang === ""))
   
     const data = {
         email: email,
@@ -56,14 +56,10 @@ export const UpdateUserModal = ({setUpdate, user, Update, language, langField, t
         phone: phone,
         pass: pass,
         cname: cname,
-        type: type
+        cancoment: comment
     }
 
     console.log(data);
-
-    let Updatefun = () => {
-        Update(data, lang)
-    } 
 
     return(
         <div id="popup-modal" tabIndex="-1" className="fixed flex z-50 mx-auto overflow-x-hidden overflow-y-auto inset-0 h-[calc(100%-1rem)] max-h-full">
@@ -108,18 +104,19 @@ export const UpdateUserModal = ({setUpdate, user, Update, language, langField, t
                             </div>
                             }
                             <div>
-                                <label htmlFor="phone" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> {translation?.type} </label>
-                                <select onChange={(e)=> setType(e.target.value)} id="countries" className="bg-gray-50 border outline-none border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-orange-500 dark:focus:border-orange-500">
-                                    <option value=""> </option>
-                                    <option value="client"> {translation?.client} </option>
-                                    <option value="agent"> {translation?.agent} </option>
-                                    <option value="company"> {translation?.company} </option>
-                                </select>
-                            </div>
-                            <div>
                                 <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> {translation?.pass} </label>
                                 <input onChange={(e)=> setPass(e.target.value)} defaultValue={user?.pass} type="password" name="password" id="password" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required />
                             </div>
+                            {canComent &&
+                            <div>
+                                <label htmlFor="language" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> {translation?.comment} </label>
+                                <select onChange={(e)=> setComment(e.target.value)} id="countries" className="bg-gray-50 border outline-none border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-orange-500 dark:focus:border-orange-500">
+                                    <option value=""> </option>
+                                    <option value={"1"}> {translation?.allowed} </option>
+                                    <option value={"0"}> {translation?.denied} </option>
+                                </select>
+                            </div>
+                            }
                             {langField &&
                             <div>
                                 <label htmlFor="language" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> {translation?.lang} </label>
@@ -132,7 +129,7 @@ export const UpdateUserModal = ({setUpdate, user, Update, language, langField, t
                             </div>
                             }
                             
-                            <GeneralBtn text={translation?.update} condition={cond} fun={Updatefun} modal={true} />
+                            <GeneralBtn text={translation?.update} condition={cond} fun={()=> Update('/users', user?.id, data, lang)} modal={true} />
                         </div>
                     </div>
                 </div>
@@ -224,10 +221,6 @@ export const PriorityModal = ({setUpdate, priority, Update, translation}) => {
         color: color,
     }
 
-    let Updatefun = () => {
-        Update(priority.id, data)
-    } 
-
     return (
         <div id="popup-modal" tabIndex="-1" className="fixed flex z-50 mx-auto overflow-x-hidden overflow-y-auto inset-0 h-[calc(100%-1rem)] max-h-full">
             <div className="relative mx-auto my-auto w-full max-w-md max-h-full">
@@ -249,7 +242,7 @@ export const PriorityModal = ({setUpdate, priority, Update, translation}) => {
                                 <input onChange={(e)=> setColor(e.target.value)} defaultValue={priority?.color} type="color" name="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required />
                             </div>
                             
-                            <GeneralBtn text={translation?.update} condition={cond} fun={Updatefun} modal={true} />
+                            <GeneralBtn text={translation?.update} condition={cond} fun={()=> Update('/priorities', priority.id, data)} modal={true} />
                         </div>
                     </div>
                 </div>

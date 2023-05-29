@@ -1,17 +1,20 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
+import { GetData, Lang } from '../../Components/Functions'
+
 import Home from '../../Pages/Agent/Home/Home'
 import Navbar from '../../Pages/Agent/Navbar/Navbar'
-import Profile from '../../Components/Pages/Profile'
-import Complaint from '../../Pages/Client/Complaint/Complaint'
+
 import Users from '../../Pages/Agent/Users/Users'
-import Create from '../../Pages/Client/Complaint/Create'
 import CreateUser from '../../Components/Pages/CreateUser'
-import Footer from '../../Components/Footer'
-import { GetData, Lang } from '../../Components/Functions'
-import Details from '../../Pages/Client/Complaint/Details'
 import Priorities from '../../Pages/Agent/Priorities/Priorities'
 import CreatePriority from '../../Pages/Agent/Priorities/CreatePriority'
+
+import Complaint from '../../Components/Pages/Complaint/Complaint'
+import Create from '../../Components/Pages/Complaint/Create'
+import Details from '../../Components/Pages/Complaint/Details'
+import Profile from '../../Components/Pages/Profile'
+import Footer from '../../Components/Footer'
 
 function AgentStack({user}) {
   const usersList = GetData('/users').data 

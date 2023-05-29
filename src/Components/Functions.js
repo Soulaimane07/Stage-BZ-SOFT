@@ -2,57 +2,12 @@ import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import Languages from "../Components/Language.json"
 import axios from "axios"
+var bcrypt = require('bcryptjs');
+
 
 export const ServerUrl = 'http://127.0.0.1:8000/api'
 export const ServerUrlPublic = 'http://127.0.0.1:8000'
 
-export const CreateUser = (user) => {
-    // const navigate = useNavigate()
-
-    alert(user)
-    // navigate('/users')
-}
-
-export const CreateComplaint = (link, complaint, fun, setLoading) => {
-    setLoading(true)
-    
-    axios.post(`${ServerUrl}${link}`, complaint, {headers: {"Content-Type": "multipart/form-data"}})
-      .then(res=> {
-        console.log(res.data);
-        fun()
-        setLoading(false)
-      })
-      .catch(err=> {
-        console.log(err);
-        setLoading(false)
-      })
-}
-
-export const CreatePriorityFun = (link, priority, fun, setLoading) => {
-    setLoading(true)
-    
-    axios.post(`${ServerUrl}${link}`, priority)
-      .then(res=> {
-        console.log(res.data);
-        fun()
-        setLoading(false)
-      })
-      .catch(err=> {
-        console.log(err);
-        setLoading(false)
-      })
-}
-
-export const Login = (user) => {
-    const navigate = useNavigate()
-    
-    return(
-        navigate('/'),
-    // localStorage.setItem('Rec-user', JSON.stringify(user))
-    // window.location.reload()
-        console.log(user)
-    )
-}
 
 export const Lang = () => {
     const [lang, setLang] = useState("fr")
@@ -68,6 +23,11 @@ export const Lang = () => {
     lang === "ar" && (langObj = Languages?.Arabic)
 
     return langObj
+}
+
+export const ChangeLang = (lang) => {
+    localStorage.setItem('Rec-lang', JSON.stringify(lang))
+    window.location.reload()
 }
 
 export const GetData = (link) => {
@@ -108,47 +68,106 @@ export const deleteUser = (id, fun) => {
         })
 }
 
-export const UpdateUser = (id, data) => {
-    axios.put(`${ServerUrl}/users/${id}`, data)
-        .then(res => {
+export const CreateUserFun = (setMessage, setLoading, user,  navigate) => {
+    setLoading(true)
+    setMessage(null)
+
+    axios.post(`${ServerUrl}/users`, user)
+        .then(res=> {
+            navigate('/users')
             console.log(res.data);
+            setLoading(false)
             window.location.reload()
+        })
+        .catch(err=> {
+            console.log(err);
+            setMessage(err?.response?.data?.message)
+            setLoading(false)
+        })
+}
+ 
+
+
+export const LoginFun = (email, pass, setMessage, setLoading, navigate) => {
+    setMessage(null)
+    setLoading(true)
+    
+    axios.get(`${ServerUrl}/users/${email}`)
+        .then(res=> {
+            setLoading(false)
+            console.log(res.data);
+            bcrypt.compare(pass, res.data?.pass, (err,valid)=>{
+                if(valid){
+                    localStorage.setItem('Rec-user', JSON.stringify(res.data))
+                    navigate('/')
+                    window.location.reload()
+                }
+                else{
+                    console.log("wrong credentials")
+                    setMessage("Wrong email or password")
+                }
+            });
+        })
+        .catch(err=> {
+            setLoading(false)
+            console.log(err);
         })
 }
 
-export const deletePriority = (id, fun) => {
-    axios.delete(`${ServerUrl}/priorities/${id}`)
+export const SignupFun = (setMessage, setLoading, user, navigate) => {
+    setMessage(null)
+    setLoading(true)
+
+    axios.post(`${ServerUrl}/users`, user)
+      .then(res=> {
+        console.log(res);
+        localStorage.setItem('Rec-user', JSON.stringify(res.data))
+        setLoading(false)
+        navigate('/')
+        window.location.reload()
+      })
+      .catch(err=> {
+        setLoading(false)
+        console.log(err);
+        setMessage(err.response.data.message)
+      })
+}
+
+
+
+
+
+
+
+
+
+export const Post = (link, data, fun, setLoading) => {
+    setLoading(true)
+
+    axios.post(`${ServerUrl}${link}`, data, {headers: {"Content-Type": "multipart/form-data"}})
+        .then(res=> {
+            console.log(res.data);
+            fun()
+            setLoading(false)
+        })
+        .catch(err => {
+            console.log(err);
+            setLoading(false)
+        })
+}
+
+export const Destroy = (link, id, fun) => {
+    axios.delete(`${ServerUrl}${link}/${id}`)
         .then(res => {
             console.log(res);
             fun()
         })
 }
 
-export const UpdatePriority = (id, data) => {
-    axios.put(`${ServerUrl}/priorities/${id}`, data)
+export const Update = (link, id, data) => {
+    axios.put(`${ServerUrl}${link}/${id}`, data)
         .then(res => {
             console.log(res.data);
             window.location.reload()
         })
-}
-
-export const Update = (id, data) => {
-    axios.put(`${ServerUrl}/priorities/${id}`, data)
-        .then(res=>{
-            console.log(res.data);
-            window.location.reload()
-        })
-}
-
-export const deleteComplaint = (id, fun) => {
-    axios.delete(`${ServerUrl}/complaints/${id}`)
-        .then(res => {
-            console.log(res);
-            fun()
-        })
-}
-
-export const ChangeLang = (lang) => {
-    localStorage.setItem('Rec-lang', JSON.stringify(lang))
-    window.location.reload()
 }

@@ -3,7 +3,7 @@ import { GeneralBtn } from '../../Buttons'
 import { Lang } from '../../Functions'
 import Alert from '../../Alert'
 
-function CreateAgent({fun, message, loading}) {
+function CreateAgent({fun, message, setMessage, setLoading, loading, navigate}) {
 const [email, setEmail] = useState("")
   const [fName, setFname] = useState("")
   const [lName, setLname] = useState("")
@@ -48,7 +48,7 @@ const [email, setEmail] = useState("")
             <input type="password" id="password" required onChange={(e)=> setPass(e.target.value)} />
         </div>
 
-        <GeneralBtn text={lang?.Ccreate?.create} condition={cond} fun={fun} data={agent} loading={loading} />
+        <GeneralBtn text={lang?.Ccreate?.create} condition={cond} fun={()=> fun(setMessage, setLoading, agent, navigate)} data={agent} loading={loading} />
     </div>
   )
 }

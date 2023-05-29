@@ -3,7 +3,7 @@ import { GeneralBtn } from '../../Buttons'
 import { Lang } from '../../Functions'
 import Alert from '../../Alert'
 
-function CreateCompany({fun, message, loading}) {
+function CreateCompany({fun, message, setMessage, setLoading, loading, navigate}) {
     const [cName, setCname] = useState("")
     const [email, setEmail] = useState("")
     const [phone, setPhone] = useState("")
@@ -42,7 +42,7 @@ function CreateCompany({fun, message, loading}) {
             <input type="password" id="password" required onChange={(e)=> setPass(e.target.value)} />
         </div>
 
-        <GeneralBtn text={lang?.Ccreate?.create} condition={cond} fun={fun} data={company} loading={loading} />
+        <GeneralBtn text={lang?.Ccreate?.create} condition={cond} fun={()=> fun(setMessage, setLoading, company, navigate)} data={company} loading={loading} />
     </div>
   )
 }

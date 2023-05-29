@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import { Lang, ServerUrl } from '../Functions'
+import { Lang, Post } from '../Functions'
 import { GeneralBtn } from '../Buttons'
-import axios from 'axios'
 
 function Comment({complaint, user, CancelCommante}) {
+  const [loading, setLoading] = useState('')
   const [text, setText] = useState('')
   const condition = text === ''
 
@@ -20,15 +20,8 @@ function Comment({complaint, user, CancelCommante}) {
     "text": text
   }
 
-  const Commente = () => {
-    axios.post(`${ServerUrl}/comments`, comment, {headers: {"Content-Type": "multipart/form-data"}})
-      .then(res => {
-        console.log(res.data);
-        window.location.reload()
-      })
-      .catch(err => {
-        console.log(err);
-      })
+  const Reload = () => {
+    window.location.reload()
   }
 
   return (
@@ -46,7 +39,7 @@ function Comment({complaint, user, CancelCommante}) {
             ></textarea>
 
             <div className="mt-4 flex justify-between space-x-4">
-                <GeneralBtn text={Lang()?.buttons?.post} fun={Commente} condition={condition} />
+                <GeneralBtn text={Lang()?.buttons?.post} fun={()=> Post('/comments', comment, Reload, setLoading)} condition={condition} loading={loading} />
                 <GeneralBtn text={Lang()?.buttons?.cancel} fun={CancelCommante} condition={false} role="delete" />
             </div>
         </div>

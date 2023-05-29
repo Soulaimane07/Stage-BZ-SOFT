@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { CreatePriorityFun, Lang } from '../../../Components/Functions'
+import { Lang, Post } from '../../../Components/Functions'
 import { GeneralBtn } from '../../../Components/Buttons'
 
 function CreatePriority() {
@@ -23,7 +23,7 @@ function CreatePriority() {
             navigate('/priorities/')
         }
 
-        CreatePriorityFun('/priorities', priority, navigatee, setLoading)
+        Post('/priorities', priority, navigatee, setLoading)
     }
 
   return (

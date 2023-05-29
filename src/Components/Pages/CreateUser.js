@@ -3,8 +3,7 @@ import CreateClient from './CreateUser/CreateClient'
 import CreateAgent from './CreateUser/CreateAgent'
 import CreateCompany from './CreateUser/CreateCompany'
 import { useNavigate } from 'react-router-dom'
-import { Lang, ServerUrl } from '../Functions'
-import axios from 'axios'
+import { CreateUserFun, Lang } from '../Functions'
 
 function CreateUser() {
     const lang = Lang()
@@ -29,23 +28,6 @@ function CreateUser() {
     ]
 
     const navigate = useNavigate('')
-    const Create = (user) => {
-        setLoading(true)
-        setMessage(null)
-
-        axios.post(`${ServerUrl}/users`, user)
-            .then(res=> {
-                navigate('/users')
-                console.log(res.data);
-                setLoading(false)
-            })
-            .catch(err=> {
-                console.log(err);
-                setMessage(err?.response?.data?.message)
-                setLoading(false)
-            })
-    }
-
 
   return (
     <div className={`${lang?.title === "ar" && "text-right"} max-w-screen-xl mx-auto p-4`}>
@@ -63,9 +45,9 @@ function CreateUser() {
                 </div>
 
                 <div className='mx-2 md:mx-6 lg:mx-10'>
-                    {plan === "client" && <CreateClient fun={Create} message={message} loading={loading} />}
-                    {plan === "agent" && <CreateAgent fun={Create} message={message} loading={loading} />}
-                    {plan === "company" && <CreateCompany fun={Create} message={message} loading={loading} />}
+                    {plan === "client" && <CreateClient fun={CreateUserFun} setMessage={setMessage} setLoading={setLoading} navigate={navigate} message={message} loading={loading} />}
+                    {plan === "agent" && <CreateAgent fun={CreateUserFun} setMessage={setMessage} setLoading={setLoading} navigate={navigate} message={message} loading={loading} />}
+                    {plan === "company" && <CreateCompany fun={CreateUserFun} setMessage={setMessage} setLoading={setLoading} navigate={navigate} message={message} loading={loading} />}
                 </div>
             </div>
         </div>

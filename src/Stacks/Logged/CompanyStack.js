@@ -1,13 +1,15 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
-import Footer from '../../Components/Footer'
-import Nav from '../../Pages/Client/Navbar/Nav'
-import Profile from '../../Components/Pages/Profile'
-import Complaint from '../../Pages/Client/Complaint/Complaint'
-import Create from '../../Pages/Client/Complaint/Create'
-import Home from '../../Pages/Company/Home/Home'
 import { GetData, Lang } from '../../Components/Functions'
-import Details from '../../Pages/Client/Complaint/Details'
+
+import Home from '../../Pages/Company/Home/Home'
+import Nav from '../../Pages/Client/Navbar/Nav'
+
+import Complaint from '../../Components/Pages/Complaint/Complaint'
+import Create from '../../Components/Pages/Complaint/Create'
+import Details from '../../Components/Pages/Complaint/Details'
+import Profile from '../../Components/Pages/Profile'
+import Footer from '../../Components/Footer'
 
 function CompanyStack({user}) {
   const complaintsList = GetData(`/getComplaints/${user?.email}`).data 

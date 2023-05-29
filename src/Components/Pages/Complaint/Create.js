@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { GeneralBtn } from '../../../Components/Buttons'
 import { useNavigate } from 'react-router-dom'
-import { CreateComplaint, GetData, Lang } from '../../../Components/Functions'
+import { GetData, Lang, Post } from '../../../Components/Functions'
 
 function Create({user}) {
     const [images, setImages] = useState([])
@@ -11,8 +11,7 @@ function Create({user}) {
 
     const [loading, setLoading] = useState(false)
 
-    // const cond = images === "" || title === "" || periode === "" || desc === ""
-    const cond = false
+    const cond = images === "" || title === "" || periode === "" || desc === ""
 
     const date = new Date()
     const complaint = {
@@ -31,9 +30,10 @@ function Create({user}) {
     const Create = () => {
         const navigatee = () => {
             navigate('/complaints/')
+            window.location.reload()
         }
 
-        CreateComplaint('/complaints', complaint, navigatee, setLoading)
+        Post('/complaints', complaint, navigatee, setLoading)
     }
 
 
@@ -90,7 +90,6 @@ function Create({user}) {
                         <option key={key} value={item.title}> {item.title} </option>
                     ))}
                 </select>
-                {/* <input type="text" className={Lang()?.title === "ar" ? "text-right" : ""} id="priorite" required/> */}
             </div>
             <div className="mb-6">
                 <label htmlFor="priorite" className="block mb-2 font-medium"> {Lang()?.Ccreate.desc} </label>

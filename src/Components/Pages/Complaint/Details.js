@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
-import { GetData, Lang, ServerUrlPublic, deleteComplaint } from '../../../Components/Functions'
+import { GetData, Lang, ServerUrlPublic, Destroy } from '../../../Components/Functions'
 import Comment from '../../../Components/Modals/Comment'
 import { GeneralBtn } from '../../../Components/Buttons'
 import { LogOutModal } from '../../../Components/Modals'
 import { useNavigate } from 'react-router-dom'
 import { useParams } from "react-router-dom";
 import CommentDetail from './CommentDetail'
+import Alert from '../../Alert'
 
 function Details({user}) {
     const params = useParams();
@@ -23,11 +24,6 @@ function Details({user}) {
         navigate('/complaints')
         window.location.reload()
     }
-    const Delete = () => {
-        setDeletee(false)
-        deleteComplaint(params.id, navigatee)
-    }
-
     const [commenter, setCommenter] = useState(false)
 
     const OpenCommente = () => {
@@ -71,20 +67,26 @@ function Details({user}) {
                                     </div>
                                 ))}
                             </div>
-                            {commenter &&
-                                <Comment complaint={params.id} user={user} CancelCommante={CancelCommante} />
+                            {(user?.cancoment && commenter)
+                                ? <Comment complaint={params.id} user={user} CancelCommante={CancelCommante} />
+                                : ""
                             }
                         </div>
                     </div>
                     
                     {!commenter &&
                         <div className="mt-6 flex justify-between space-x-4">
-                            <GeneralBtn text={lang?.buttons?.comment} fun={OpenCommente} condition={false} />
+                            <GeneralBtn text={lang?.buttons?.comment} fun={OpenCommente} condition={!user?.cancoment} />
                             {comments.data.length === 0 && <GeneralBtn text={lang?.buttons?.delete} fun={deleteC} condition={false} role="delete" /> }
                         </div>
                     }
+                    {!user?.cancoment &&
+                        <div className='text-bold mt-6'>
+                            <Alert message={lang?.alert?.banned} />
+                        </div>
+                    }
                 </div>
-                {deletee && <LogOutModal title={lang.alert.complaint} yes={lang.alert.yes} no={lang.alert.no} fun={Delete} setLogout={setDeletee} />}
+                {deletee && <LogOutModal title={lang.alert.complaint} yes={lang.alert.yes} no={lang.alert.no} fun={()=> Destroy('/complaints', params.id, navigatee)} setLogout={setDeletee} />}
             </div>
         </div>
   )

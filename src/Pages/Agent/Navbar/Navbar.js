@@ -84,7 +84,7 @@ function Navbar({user}) {
             </div>
         </nav>
 
-        {logOut &&<LogOutModal title={lang?.alert?.signout} yes={lang?.alert?.yes} no={lang?.alert?.no} setLogout={setLogout} />}
+        {logOut && <LogOutModal title={lang?.alert?.signout} yes={lang?.alert?.yes} no={lang?.alert?.no} setLogout={setLogout} />}
     </div>
   )
 }

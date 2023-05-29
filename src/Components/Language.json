@@ -106,7 +106,8 @@
             "signout":"Are you sure you want to Sign out?",
             "delete":"Are you sure you want to Delete your account?",
             "user":"Are you sure you want to delete the user?",
-            "priority":"Are you sure you want to delete the priority?"
+            "priority":"Are you sure you want to delete the priority?",
+            "banned":"You have been banned of making comments."
         },
         "months":{
             "january":"January",
@@ -147,7 +148,10 @@
             "type":"Account Type",
             "title":"Title",
             "color":"Color",
-            "demo":"Demo"
+            "demo":"Demo",
+            "comment":"Comment",
+            "allowed":"Allowed",
+            "denied":"Banned"
         },
         "update":{
             "title":"Update User",
@@ -165,7 +169,10 @@
             "updateP":"Update Priority",
             "client":"Client",
             "agent":"Agent",
-            "company": "Company"
+            "company": "Company",
+            "comment":"Comment",
+            "allowed":"Allowed",
+            "denied":"Banned"
         }
     },
     "Frensh":{
@@ -274,7 +281,8 @@
             "signout":"Êtes-vous certain de vouloir vous déconnecter?",
             "delete":"Êtes-vous sûr de vouloir supprimer votre compte ?",
             "user":"Voulez-vous vraiment supprimer l'utilisateur ?",
-            "priority":"Voulez-vous vraiment supprimer la priorité ?"
+            "priority":"Voulez-vous vraiment supprimer la priorité ?",
+            "banned":"Vous avez été interdit de faire des commentaires."
         },
         "months":{
             "january":"Janvier",
@@ -315,7 +323,10 @@
             "type":"Type de compte",
             "title":"Titre",
             "color":"Couleur",
-            "demo":"Démo"
+            "demo":"Démo",
+            "comment":"Commenter",
+            "allowed":"Permis",
+            "denied":"Refusé"
         },
         "update":{
             "title":"Mettre à jour l'utilisateur",
@@ -333,7 +344,10 @@
             "updateP":"Mise à jour la priorité",
             "client":"Client",
             "agent":"Agent",
-            "company": "Entreprise"
+            "company": "Entreprise",
+            "comment":"Commenter",
+            "allowed":"Permis",
+            "denied":"Refusé"
         }
     },
     "Arabic":{
@@ -442,7 +456,8 @@
             "signout":"هل أنت متأكد أنك تريد الخروج؟",
             "delete":"هل انت متأكد انك تريد حذف حسابك؟",
             "user":"هل أنت متأكد أنك تريد حذف المستخدم؟",
-            "priority":"هل أنت متأكد أنك تريد حذف الأولوية؟"
+            "priority":"هل أنت متأكد أنك تريد حذف الأولوية؟",
+            "banned":"لقد تم منعك من الإدلاء بتعليقات."
         },
         "months":{
             "january":"يناير",
@@ -483,7 +498,10 @@
             "type":"نوع الحساب",
             "title":"العنوان",
             "color":"اللون",
-            "demo":"العرض"
+            "demo":"العرض",
+            "comment":"تعليق",
+            "allowed":"مسموح",
+            "denied":"محظور"
         },
         "update":{
             "title":"تحديث المستخدم",
@@ -501,7 +519,10 @@
             "updateP":"تحديث الاولوية",
             "client":"عميل",
             "agent":"عامل",
-            "company": "شركة"
+            "company": "شركة",
+            "comment":"تعليق",
+            "allowed":"مسموح",
+            "denied":"محظور"
         }
     }
 }

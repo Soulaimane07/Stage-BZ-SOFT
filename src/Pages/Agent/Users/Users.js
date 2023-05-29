@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import NoData from '../../../Components/NoData'
-import { Lang, UpdateUser, deleteUser } from '../../../Components/Functions'
+import { Destroy, Lang, Update } from '../../../Components/Functions'
 import { Link } from 'react-router-dom'
 
 import {RiDeleteBinLine} from 'react-icons/ri'
@@ -19,16 +19,7 @@ function Users(props) {
         window.location.reload()
     }
 
-    const deleteFun = () => {
-        deleteUser(openDelete, closeDelete)
-    }
-
-
     const [openUpdate, setOpenUpdate] = useState(null)
-
-    const Update = (data, lang) => {
-        UpdateUser(openUpdate?.id, data)
-    }
 
     
   return (
@@ -66,6 +57,9 @@ function Users(props) {
                                   <th scope="col" className="px-6 py-3">
                                     {lang?.table?.phone}
                                   </th>
+                                  <th scope="col" className="px-6 py-3">
+                                    {lang?.table?.comment}
+                                  </th>
                                   <th scope="col" className="px-6 py-3 text-center">
                                     {lang?.table?.type}
                                   </th>
@@ -90,6 +84,12 @@ function Users(props) {
                                   </td>
                                   <td className="px-6 py-4">
                                       {item.phone}
+                                  </td>
+                                  <td className="px-6 py-4">
+                                        {item.cancoment 
+                                            ? <span className="bg-green-100 text-green-800 text-xs font-medium mr-2 px-4 py-1.5 rounded dark:bg-green-700 dark:text-green-200">{lang?.table?.allowed}   </span>
+                                            : <span className="bg-red-100 text-red-800 text-xs font-medium mr-2 px-4 py-1.5 rounded dark:bg-red-700 dark:text-red-200">{lang?.table?.denied}   </span>
+                                        }
                                   </td>
                                   <td className="px-6 py-4 text-center">
                                         {item.type === "agent" &&
@@ -117,10 +117,10 @@ function Users(props) {
                   </div>
 
                     {openDelete && 
-                        <LogOutModal title={lang?.alert?.user} yes={lang?.alert?.yes} no={lang?.alert?.no} setLogout={setOpenDelete} fun={deleteFun} />
+                        <LogOutModal title={lang?.alert?.user} yes={lang?.alert?.yes} no={lang?.alert?.no} setLogout={setOpenDelete} fun={()=> Destroy('/users', openDelete, closeDelete)} />
                     }
                     {openUpdate && 
-                        <UpdateUserModal user={openUpdate} setUpdate={setOpenUpdate} Update={Update} language={lang?.title} langField={false} translation={lang?.update} />
+                        <UpdateUserModal canComent={true} user={openUpdate} setUpdate={setOpenUpdate} Update={Update} language={lang?.title} langField={false} translation={lang?.update} />
                     }
                 </>
                 : <NoData Language={lang?.users.nodata} stat="users" create="User" />

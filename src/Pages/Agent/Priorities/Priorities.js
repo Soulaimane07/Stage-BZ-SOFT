@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import NoData from '../../../Components/NoData'
-import { GetData, Lang, UpdatePriority, deletePriority } from '../../../Components/Functions'
+import { Destroy, GetData, Lang, Update } from '../../../Components/Functions'
 import { Link } from 'react-router-dom'
 
 import {RiDeleteBinLine} from 'react-icons/ri'
@@ -19,16 +19,8 @@ function Priorities() {
         window.location.reload()
     }
 
-    const deleteFun = () => {
-        deletePriority(openDelete, closeDelete)
-    }
-
-
     const [openUpdate, setOpenUpdate] = useState(null)
 
-    const Update = (id, data) => {
-        UpdatePriority(id, data)
-    }
 
   return (
     <div className={`${lang.title === "ar" && "text-right"} max-w-screen-xl mx-auto p-4`}>
@@ -98,7 +90,7 @@ function Priorities() {
                   </div>
 
                     {openDelete && 
-                        <LogOutModal title={lang?.alert?.priority} yes={lang?.alert?.yes} no={lang?.alert?.no} setLogout={setOpenDelete} fun={deleteFun} />
+                        <LogOutModal title={lang?.alert?.priority} yes={lang?.alert?.yes} no={lang?.alert?.no} setLogout={setOpenDelete} fun={()=> Destroy('/priorities', openDelete, closeDelete)} />
                     }
                     {openUpdate && 
                         <PriorityModal priority={openUpdate} setUpdate={setOpenUpdate} Update={Update} language={lang?.title} translation={lang?.update} />

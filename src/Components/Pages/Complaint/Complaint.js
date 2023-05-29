@@ -6,8 +6,6 @@ import { Link } from 'react-router-dom'
 function Complaint({data}) {
   const lang = Lang()
 
-  console.log(data);
-
   return (
     <div className={`${lang.title === "ar" && 'text-right'} max-w-screen-xl mx-auto mb-0 p-4 pb-0`}>
         <div className={`${lang.title === "ar" && 'flex-row-reverse'} flex justify-between items-center mt-4`}>
