@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom'
 import { useParams } from "react-router-dom";
 import CommentDetail from './CommentDetail'
 import Alert from '../../Alert'
+import Affecte from './Affecte'
 
 function Details({user}) {
     const params = useParams();
@@ -37,6 +38,12 @@ function Details({user}) {
     const lang = Lang()
 
     const comments = GetData(`/getComments/${params.id}`)
+
+    const [affectModal, setAffectModal] = useState(false)
+
+    const OpenAffect = () => {
+        setAffectModal(true)
+    }
 
   return (
         <div className={`${lang.title === "ar" && 'text-right'} mx-auto my-auto w-full mb-40 max-w-lg`}>
@@ -78,6 +85,7 @@ function Details({user}) {
                         <div className="mt-6 flex justify-between space-x-4">
                             <GeneralBtn text={lang?.buttons?.comment} fun={OpenCommente} condition={!user?.cancoment} />
                             {comments.data.length === 0 && <GeneralBtn text={lang?.buttons?.delete} fun={deleteC} condition={false} role="delete" /> }
+                            {user?.type === "agent" && <GeneralBtn text={lang?.buttons?.affecter} fun={OpenAffect} condition={false} />}
                         </div>
                     }
                     {!user?.cancoment &&
@@ -87,6 +95,7 @@ function Details({user}) {
                     }
                 </div>
                 {deletee && <LogOutModal title={lang.alert.complaint} yes={lang.alert.yes} no={lang.alert.no} fun={()=> Destroy('/complaints', params.id, navigatee)} setLogout={setDeletee} />}
+                {affectModal && <Affecte close={setAffectModal} />}
             </div>
         </div>
   )

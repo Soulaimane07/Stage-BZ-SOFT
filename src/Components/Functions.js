@@ -87,6 +87,27 @@ export const CreateUserFun = (setMessage, setLoading, user,  navigate) => {
 }
  
 
+export const SearchFun = (searchText) => {
+    const users = GetData('/users').data
+    const NewData = users.filter((item)=> (item.email)?.toLowerCase().startsWith(searchText?.toLowerCase()))
+    return NewData
+}
+
+export const AffectComplaint = (complaint, data, close) => {
+    console.log('Users',data,'Complaint', complaint);
+    
+    axios.post(`${ServerUrl}/complaints/affect/${complaint}`, data)
+        .then(res =>{
+            console.log(res.data);
+            close(false)
+        })
+        .catch(err =>{
+            console.log(err.response.data);
+        })
+}
+
+
+
 
 export const LoginFun = (email, pass, setMessage, setLoading, navigate) => {
     setMessage(null)

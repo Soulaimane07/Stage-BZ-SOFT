@@ -97,7 +97,13 @@
             "delete":"Delete",
             "post":"Post",
             "cancel":"Cancel",
-            "create":"Create"
+            "create":"Create",
+            "affecter":"Affect"
+        },
+        "affect":{
+            "title":"Affect to users",
+            "search":"Search for users using email...",
+            "affect":"Affect"
         },
         "alert":{
             "yes":"Yes, I'm sure",
@@ -272,7 +278,13 @@
             "comment":"Commenter",
             "delete":"Supprimer",
             "post":"Poste",
-            "cancel":"Annuler"
+            "cancel":"Annuler",
+            "affecter":"Affecter"
+        },
+        "affect":{
+            "title":"Affecter aux utilisateurs",
+            "search":"Rechercher des utilisateurs par e-mail...",
+            "affect":"Affecter"
         },
         "alert":{
             "yes":"Oui, je suis sûr",
@@ -447,7 +459,13 @@
             "comment":"تعليق",
             "delete":"حذف",
             "post":"إنشاء",
-            "cancel":"إلغاء"
+            "cancel":"إلغاء",
+            "affecter":"تعيين"
+        },
+        "affect":{
+            "title":"تعيين للمستخدمين",
+            "search":"البحث عن المستخدمين باستخدام البريد الإلكتروني ...",
+            "affect":"تعيين"
         },
         "alert":{
             "yes":"نعم، أنا متأكد",

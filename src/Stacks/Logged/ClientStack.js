@@ -12,7 +12,7 @@ import Profile from '../../Components/Pages/Profile'
 import Footer from '../../Components/Footer'
 
 function ClientStack({user}) {
-  const complaintsList = GetData(`/getComplaints/${user?.email}`).data 
+  const complaintsList = GetData(`/getComplaints/${user?.email}`).data
 
   const footerPages = [
     {
